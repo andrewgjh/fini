@@ -7,8 +7,9 @@ DROP TABLE IF EXISTS locations CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
+  email VARCHAR(255) NOT NULL,
   name VARCHAR(255) NOT NULL,
-  password VARCHAR (255) NOT NULL
+  password VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE categories (
@@ -20,8 +21,8 @@ CREATE TABLE categories (
 CREATE TABLE to_do_items (
   id SERIAL PRIMARY KEY NOT NULL,
   title VARCHAR(255) NOT NULL,
-  content VARCHAR (500),
-  category_id VARCHAR (255) REFERENCES categories.id ON DELETE CASCADE,
+  content VARCHAR(500),
+  category_id INTEGER NOT NULL REFERENCES categories.id ON DELETE CASCADE,
   user_id INTEGER NOT NULL REFERENCES users.id ON DELETE CASCADE,
   priority SMALLINT,
   deadline DATE,
