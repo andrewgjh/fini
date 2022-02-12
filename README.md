@@ -1,4 +1,4 @@
-LHL Node Skeleton
+# fini - a smart to do list
 =========
 
 ## Project Setup
