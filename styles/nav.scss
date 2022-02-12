@@ -6,6 +6,15 @@ nav {
   justify-content: space-between;
   align-content: center;
   align-items: center;
+  &_add_todo{
+    background: var(--color-secondary);
+    height: 2em;
+    width: 2em;
+    border-radius: 50px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .user {
   background-color: var(--color-white);
