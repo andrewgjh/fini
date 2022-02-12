@@ -27,6 +27,7 @@ CREATE TABLE to_do_items (
   deadline DATE,
   is_completed BOOLEAN default FALSE,
   created_at TIMESTAMP,
+  completed_at TIMESTAMP
 );
 
 CREATE TABLE reminders (
