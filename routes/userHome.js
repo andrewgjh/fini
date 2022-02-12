@@ -2,6 +2,9 @@
 
 const express = require('express');
 const router  = express.Router();
+
+// COOKIE IMPLEMENTATION TO COME
+
 // const app = express();
 // const cookieSession = require('cookie-session');
 
@@ -12,6 +15,10 @@ const router  = express.Router();
 //   // Cookie Options
 //   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 // }));
+
+
+// TO TEST FOR NOW MANUALLY ADD USER TO DB AND USE:
+// $ curl -X POST -d 'email=test@test.com' http://localhost:8080/login
 
 module.exports = (db) => {
   router.post("/", (req, res) => {
