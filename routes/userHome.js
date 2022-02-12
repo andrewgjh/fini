@@ -20,7 +20,6 @@ module.exports = (db) => {
       .then(data => {
         const users = data.rows[0];
         for (let userID of Object.values(users)) {
-          console.log(userID);
           if (userID === email) {
             console.log("EMAIL FOUND");
           } else {
@@ -35,5 +34,5 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  return router;
+ return router;
 };
