@@ -18,7 +18,12 @@
 
 <body>
   <%- include("partials/header") %>
-  <h1>Have fun! 🥔</h1>
+  <section class="add_item mt-5 mb-5">
+    <form method="POST" action="/add">
+      <input class="add_item_input" name="to_do" id="to_do" placeholder='e.g. Read Harry Potter'></input>
+    </form>
+  </section>
+
 </body>
 
 </html>

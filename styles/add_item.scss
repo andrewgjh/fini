@@ -1,0 +1,17 @@
+.add_item{
+  display:flex;
+  justify-content: center;
+  &_input{
+    border-radius: 15px;
+    border: none;
+    padding:.5em;
+    transition: all .2s;
+    &:focus{
+      outline:none;
+      box-shadow: 0 2rem 3rem rgba(var(--color-black), $alpha: .3);
+      border-bottom: 3px solid var(--color-secondary);
+    }
+  }
+
+
+}

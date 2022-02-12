@@ -1,7 +1,8 @@
 @import 'variables';
 @import 'nav';
+@import 'add_item';
 
 body {
-  background: rgb(163, 208, 219);
+  background: var(--bg-color);
 }
 
