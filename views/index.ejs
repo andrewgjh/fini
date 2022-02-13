@@ -20,12 +20,15 @@
 </head>
 
 <body>
+
   <%- include("partials/header") %>
+  <!-- add a new to do list item - this line will be hidden when not clicked-->
   <section class="add-item mt-5 mb-5">
     <form method="POST" action="/add">
       <input class="add-item-input" name="to-do" id="to-do" placeholder='e.g. Read Harry Potter'></input>
     </form>
   </section>
+  <!-- template for each category for each category -->
   <section class="to-do-list to-do-list-watch mb-1 mt-1">
     <header class='to-do-list-title'>
       <h3>to Watch</h3>
@@ -34,26 +37,30 @@
       <figure class="to-do-list-detail-expand"><i class="fa-solid fa-chevron-down"></i></figure>
       <p class="to-do-list-detail-count">1/4</p>
     </summary>
-    <list class="to-do-list-items">
       <ul>
-        <li>Eternals</li>
-        <li>Matrix</li>
-        <li>No Time to Die</li>
+        <li class="to-do-list-items">
+          <p>Eternals - Complete in 2 weeks</p>
+          <div>
+              <form action="post">
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <input class='ml-5' type="checkbox">
+              </form>
+          </div>
+          </li>
       </ul>
-    </list>
   </section>
-  <!-- <section class="to-do-list to-do-list-read mb-1 mt-1">
-    <header class='to-do-list-title'><h3 >to Read</h3></header>
-    <i class="fa-solid fa-chevron-down arrow-list-expand"></i>
+
+  <!-- button to add new categories -->
+  <section class="to-do-list-add-category mt-3">
+    <i class="fa-solid fa-square-plus to-do-list-add-category-plus"></i>
+
   </section>
-  <section class="to-do-list to-do-list-eat mb-1 mt-1">
-    <header class='to-do-list-title'><h3 >to Eat</h3></header>
-    <i class="fa-solid fa-chevron-down arrow-list-expand"></i>
-  </section>
-  <section class="to-do-list to-do-list-buy mb-1 mt-1">
-    <header class='to-do-list-title'><h3 >to Buy</h3></header>
-    <i class="fa-solid fa-chevron-down arrow-list-expand"></i>
-  </section> -->
+
+
 </body>
 
 </html>

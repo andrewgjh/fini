@@ -1,6 +1,7 @@
 .add-item{
   display:flex;
   justify-content: center;
+  padding:1em;
   &-input{
     border-radius: 15px;
     border: none;
@@ -10,6 +11,7 @@
       outline:none;
       box-shadow: 0 2rem 3rem rgba(var(--color-black), $alpha: .3);
       border-bottom: 3px solid var(--color-secondary);
+
     }
   }
 
