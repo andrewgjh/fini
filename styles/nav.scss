@@ -6,7 +6,7 @@ nav {
   justify-content: space-between;
   align-content: center;
   align-items: center;
-  &_add_todo{
+  &-add-todo{
     background: var(--color-secondary);
     height: 2em;
     width: 2em;
@@ -31,11 +31,11 @@ nav {
   shape-outside: circle(50% at 50% 50%);
   clip-path: circle(50% at 50% 50%);
   position: relative;
-  &_photo {
+  &-photo {
     height: 100%;
     transition: all .5s;
   }
-  &_caption {
+  &-caption {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -47,12 +47,11 @@ nav {
     opacity: 0;
     transition: all .5s;
   }
-  &:hover &_caption {
+  &:hover &-caption {
     opacity: 1;
     transform: translate(-50%, -50%);
   }
-  &:hover &_photo {
-    // transform: translateX(-4rem) scale(1);
+  &:hover &-photo {
     filter: blur(.1rem) brightness(30%);
   }
 }

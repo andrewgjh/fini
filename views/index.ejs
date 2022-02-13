@@ -6,8 +6,11 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
@@ -18,12 +21,39 @@
 
 <body>
   <%- include("partials/header") %>
-  <section class="add_item mt-5 mb-5">
+  <section class="add-item mt-5 mb-5">
     <form method="POST" action="/add">
-      <input class="add_item_input" name="to_do" id="to_do" placeholder='e.g. Read Harry Potter'></input>
+      <input class="add-item-input" name="to-do" id="to-do" placeholder='e.g. Read Harry Potter'></input>
     </form>
   </section>
-
+  <section class="to-do-list to-do-list-watch mb-1 mt-1">
+    <header class='to-do-list-title'>
+      <h3>to Watch</h3>
+    </header>
+    <summary class="to-do-list-detail">
+      <figure class="to-do-list-detail-expand"><i class="fa-solid fa-chevron-down"></i></figure>
+      <p class="to-do-list-detail-count">1/4</p>
+    </summary>
+    <list class="to-do-list-items">
+      <ul>
+        <li>Eternals</li>
+        <li>Matrix</li>
+        <li>No Time to Die</li>
+      </ul>
+    </list>
+  </section>
+  <!-- <section class="to-do-list to-do-list-read mb-1 mt-1">
+    <header class='to-do-list-title'><h3 >to Read</h3></header>
+    <i class="fa-solid fa-chevron-down arrow-list-expand"></i>
+  </section>
+  <section class="to-do-list to-do-list-eat mb-1 mt-1">
+    <header class='to-do-list-title'><h3 >to Eat</h3></header>
+    <i class="fa-solid fa-chevron-down arrow-list-expand"></i>
+  </section>
+  <section class="to-do-list to-do-list-buy mb-1 mt-1">
+    <header class='to-do-list-title'><h3 >to Buy</h3></header>
+    <i class="fa-solid fa-chevron-down arrow-list-expand"></i>
+  </section> -->
 </body>
 
 </html>

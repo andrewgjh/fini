@@ -1,0 +1,43 @@
+.to-do-list {
+  width: 95%;
+  margin: auto;
+  border-radius: 15px;
+  padding: 1em;
+  color: var(--color-white);
+  &-title{
+    display: flex;
+    justify-content: center;
+  }
+  &-watch{
+    background-color: var(--watch-list-bg-color);
+  }
+  &-read{
+    background-color: var(--read-list-bg-color);
+  }
+  &-buy{
+    background-color: var(--buy-list-bg-color);
+  }
+  &-eat{
+    background-color: var(--eat-list-bg-color);
+  }
+  &:hover{
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.3);
+  }
+
+  &-detail{
+    display:flex;
+    justify-content: space-between;
+    &-expand{
+      height:2em;
+      width:2em;
+      border-radius: 50px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    &-count{
+      color:var(--color-grey-text)
+    }
+  }
+}
