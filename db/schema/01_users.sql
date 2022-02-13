@@ -23,6 +23,7 @@ CREATE TABLE categories (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
   icon_url VARCHAR(255)
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE to_do_items (

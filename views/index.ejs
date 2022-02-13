@@ -24,7 +24,7 @@
   <%- include("partials/header") %>
   <!-- add a new to do list item - this line will be hidden when not clicked-->
   <section class="add-item mt-5 mb-5">
-    <form method="POST" action="/add">
+    <form method="POST" action="/to-do-item">
       <input class="add-item-input" name="to-do" id="to-do" placeholder='e.g. Read Harry Potter'></input>
     </form>
   </section>
@@ -43,6 +43,33 @@
         <!-- template for individual list items -->
         <li class="to-do-list-items">
           <p>Eternals - Complete in 2 weeks</p>
+          <div>
+              <form action="post">
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <input class='ml-5' type="checkbox">
+              </form>
+          </div>
+          </li>
+      </ul>
+  </section>
+
+  <section class="to-do-list to-do-list-read mb-1 mt-1">
+    <header class='to-do-list-title'>
+      <h3>to Read</h3>
+    </header>
+    <summary class="to-do-list-detail">
+      <figure class="to-do-list-detail-expand"><i class="fa-solid fa-chevron-down"></i></figure>
+      <p class="to-do-list-detail-count">1/4</p>
+    </summary>
+      <ul class="to-read">
+
+        <!-- template for individual list items -->
+        <li class="to-do-list-items">
+          <p>To Kill A Mockingbird - Complete in 4 weeks</p>
           <div>
               <form action="post">
                 <i class="fa-solid fa-exclamation"></i>
