@@ -1,39 +1,39 @@
-// Login routes
+// LOGIN ROUTES
 
 const express = require('express');
 const router  = express.Router();
 
-// COOKIE IMPLEMENTATION TO COME
+const cookieSession = require('cookie-session');
 
-// const app = express();
-// const cookieSession = require('cookie-session');
+router.use(cookieSession({
+  name: 'session',
+  keys: ['X0BYyKPSFH', '9Rl8A5NesE'],
 
-// app.use(cookieSession({
-//   name: 'session',
-//   keys: ['X0BYyKPSFH', '9Rl8A5NesE'],
-
-//   // Cookie Options
-//   maxAge: 24 * 60 * 60 * 1000 // 24 hours
-// }));
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
 
 
-// TO TEST FOR NOW MANUALLY ADD USER TO DB AND USE:
-// $ curl -X POST -d 'email=test@test.com' http://localhost:8080/login
-
+// Post to /login asserts if a login is valid, sets a cookie and redirects to /main if true
 module.exports = (db) => {
   router.post("/", (req, res) => {
     const email = req.body.email;
-    db.query(`SELECT email FROM users;`)
+    db.query(`SELECT * FROM users;`)
       .then(data => {
-        const users = data.rows[0];
+        const users = data.rows;
+        // THE FOLLOWING EMAIL CHECK COULD BE A HELPER FUNCTION
+        // checks if input email matches a database email
+        // If true, sets a cookie with the user profile, redirects to main page
+        // NO PASSWORD CHECK (yet?)
         for (let userID of Object.values(users)) {
-          if (userID === email) {
-            console.log("EMAIL FOUND");
+          if (userID.email === email) {
+            console.log("EMAIL FOUND", userID);
+            req.session.user = userID;
+            return res.redirect("/main");
           } else {
           return res.status(403).send("Email not found");
           }
         }
-        res.json(console.log('user logged in?', email, data.rows[0].email));
       })
       .catch(err => {
         res
