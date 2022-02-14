@@ -5,16 +5,16 @@ const router  = express.Router();
 
 // COOKIE IMPLEMENTATION TO COME
 
-// const app = express();
-// const cookieSession = require('cookie-session');
+const app = express();
+const cookieSession = require('cookie-session');
 
-// app.use(cookieSession({
-//   name: 'session',
-//   keys: ['X0BYyKPSFH', '9Rl8A5NesE'],
+app.use(cookieSession({
+  name: 'session',
+  keys: ['X0BYyKPSFH', '9Rl8A5NesE'],
 
-//   // Cookie Options
-//   maxAge: 24 * 60 * 60 * 1000 // 24 hours
-// }));
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
 
 
 // TO TEST FOR NOW MANUALLY ADD USER TO DB AND USE:
@@ -23,12 +23,14 @@ const router  = express.Router();
 module.exports = (db) => {
   router.post("/", (req, res) => {
     const email = req.body.email;
-    db.query(`SELECT email FROM users;`)
+    db.query(`SELECT * FROM users;`)
       .then(data => {
-        const users = data.rows[0];
+        const users = data.rows;
         for (let userID of Object.values(users)) {
-          if (userID === email) {
+          if (userID.email === email) {
             console.log("EMAIL FOUND");
+            req.session = userID;
+            res.redirect("./");
           } else {
           return res.status(403).send("Email not found");
           }
