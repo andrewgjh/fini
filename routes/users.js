@@ -6,6 +6,7 @@
  */
 
 const express = require('express');
+const { DatabaseError } = require('pg');
 const router  = express.Router();
 
 module.exports = (db) => {
