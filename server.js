@@ -44,6 +44,7 @@ const userHomeRoutes = require("./routes/userHome");
 const mainPageRoutes = require("./routes/main");
 const userRegister = require("./routes/register");
 const categoryRoutes = require("./routes/categories")
+const logoutRoutes = require("./routes/logout")
 
 // Tells express to use the routers as middleware
 // Mount all resource routes
@@ -55,6 +56,7 @@ app.use("/login", userHomeRoutes(db));
 app.use("/main", mainPageRoutes(db));
 app.use("/register", userRegister(db));
 app.use("/categories", categoryRoutes(db));
+app.use("/logout", logoutRoutes(db));
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
