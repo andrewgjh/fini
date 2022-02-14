@@ -1,4 +1,5 @@
 // LOGIN ROUTES
+require("dotenv").config();
 
 const express = require('express');
 const router  = express.Router();
@@ -7,7 +8,7 @@ const cookieSession = require('cookie-session');
 
 router.use(cookieSession({
   name: 'session',
-  keys: ['X0BYyKPSFH', '9Rl8A5NesE'],
+  keys: [process.env.KEY1, process.env.KEY2],
 
   // Cookie Options
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
