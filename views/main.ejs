@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>fini</title>
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/eventhandlerfunctions.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+
+<body>
+
+  <%- include("partials/header") %>
+  <!-- add a new to do list item - this line will be hidden when not clicked-->
+  <section class="add-item mt-5 mb-5">
+    <form method="POST" action="/to-do-item">
+      <input class="add-item-input" name="to-do" id="to-do" placeholder='e.g. Read Harry Potter'></input>
+    </form>
+  </section>
+
+  <!-- template for each category-->
+  <section class="to-do-list to-do-list-watch mb-1 mt-1">
+    <header class='to-do-list-title'>
+      <h3>to Watch</h3>
+    </header>
+    <summary class="to-do-list-detail">
+      <figure class="to-do-list-detail-expand"><i class="fa-solid fa-chevron-down"></i></figure>
+      <p class="to-do-list-detail-count">1/4</p>
+    </summary>
+      <ul class="to-watch">
+
+        <!-- template for individual list items -->
+        <li class="to-do-list-items">
+          <p>Eternals - Complete in 2 weeks</p>
+          <div>
+              <form action="post">
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <input class='ml-5' type="checkbox">
+              </form>
+          </div>
+          </li>
+      </ul>
+  </section>
+
+  <section class="to-do-list to-do-list-read mb-1 mt-1">
+    <header class='to-do-list-title'>
+      <h3>to Read</h3>
+    </header>
+    <summary class="to-do-list-detail">
+      <figure class="to-do-list-detail-expand"><i class="fa-solid fa-chevron-down"></i></figure>
+      <p class="to-do-list-detail-count">1/4</p>
+    </summary>
+      <ul class="to-read">
+
+        <!-- template for individual list items -->
+        <li class="to-do-list-items">
+          <p>To Kill A Mockingbird - Complete in 4 weeks</p>
+          <div>
+              <form action="post">
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <input class='ml-5' type="checkbox">
+              </form>
+          </div>
+          </li>
+      </ul>
+  </section>
+  <section class="to-do-list to-do-list-buy mb-1 mt-1">
+    <header class='to-do-list-title'>
+      <h3>to Buy</h3>
+    </header>
+    <summary class="to-do-list-detail">
+      <figure class="to-do-list-detail-expand"><i class="fa-solid fa-chevron-down"></i></figure>
+      <p class="to-do-list-detail-count">1/4</p>
+    </summary>
+      <ul class="to-buy">
+
+        <!-- template for individual list items -->
+        <li class="to-do-list-items">
+          <p>Humidifer</p>
+          <div>
+              <form action="post">
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <input class='ml-5' type="checkbox">
+              </form>
+          </div>
+          </li>
+      </ul>
+  </section>
+  <section class="to-do-list to-do-list-eat mb-1 mt-1">
+    <header class='to-do-list-title'>
+      <h3>to Eat</h3>
+    </header>
+    <summary class="to-do-list-detail">
+      <figure class="to-do-list-detail-expand"><i class="fa-solid fa-chevron-down"></i></figure>
+      <p class="to-do-list-detail-count">1/4</p>
+    </summary>
+      <ul class="to-eat">
+
+        <!-- template for individual list items -->
+        <li class="to-do-list-items">
+          <p>The Keg</p>
+          <div>
+              <form action="post">
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <i class="fa-solid fa-exclamation"></i>
+                <input class='ml-5' type="checkbox">
+              </form>
+          </div>
+          </li>
+      </ul>
+  </section>
+
+  <!-- button to add new categories -->
+  <section class="to-do-list-add-category mt-3">
+    <i class="fa-solid fa-square-plus to-do-list-add-category-plus"></i>
+
+  </section>
+
+
+</body>
+
+</html>
