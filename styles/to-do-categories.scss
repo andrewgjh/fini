@@ -20,6 +20,9 @@
   &-eat{
     background-color: var(--eat-list-bg-color);
   }
+  &-misc{
+    background-color: var(--misc-list-bg-color);
+  }
   &:hover{
     box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.3);
   }
