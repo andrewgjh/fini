@@ -16,7 +16,7 @@ module.exports = () => {
   router.post("/to-do-items", (req, res) => {
     const toDoItem = req.body.toDo;
     //simulating grabbing userId (ATTENTION FOR LATER)
-    const userID = 1;
+    const userID = req.session.user.id;
     //simulating getting category ID (ADD IN SMART SORT FUNCTION LATER)
     const categoryId = 5;
     // inserting item into database
