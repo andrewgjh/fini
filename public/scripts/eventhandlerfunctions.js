@@ -54,7 +54,7 @@ const toggleCategory = function(event){
       })
     });
   } else {
-    const miscList = $(`.to-do-5`);
+    const miscList = $(`.to-do-${category}`);
     miscList.detach();
   }
 }
