@@ -25,3 +25,7 @@ const addItem = function (event) {
     alert('Cannot submit empty to do item.')
   }
 };
+
+const toggleCategory = function(){
+  console.log('toggle');
+}
