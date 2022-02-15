@@ -26,6 +26,11 @@ nav {
     }
   }
 }
+.flex-space-around {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
 .user {
   background-color: var(--color-white);
   width: 4em;

@@ -31,14 +31,14 @@ module.exports = (db) => {
         // If true, sets a cookie with the user profile, redirects to main page
         // NO PASSWORD CHECK (yet?)
         for (let userID of Object.values(users)) {
+          console.log(email, userID.email)
           if (userID.email === email) {
             console.log("EMAIL FOUND", userID);
             req.session.user = userID;
-            return res.redirect("/main");
-          } else {
-          return res.status(403).send("Email not found");
+            return res.redirect("../");
           }
         }
+        return res.status(403).send(`<p>Email not found</p><a href="/login">Click here to go back</a>`);
       })
       .catch(err => {
         res

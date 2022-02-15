@@ -23,14 +23,16 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark">
-      <a class="navbar-brand" "><img src="../public/images/Fini_logo.png" alt="logo"></a>
+      <a class="navbar flex-space-around navbar-brand"><img src="Images/Fini_logo.png" alt="logo" /></a>
     </nav>
   </header>
-<!-- THE INPUT BELOW IS LITERALLY COPIED FROM TINYAPP JUST TO TEST, MAY NEED TWEAKING/FORMATTING -->
-<div>
+<div class="flex-space-around my-3">
   <form action="/login" method="POST">
-    <input class="form-control" type="email" name="email" id="emailForm" placeholder="Enter Email" style="max-width:300px;">
-    <button type="submit" class="btn btn-primary">Login</button>
+    <label for="emailForm" class="label">Login</label>
+    <input class="form-control my-3" type="email" name="email" id="emailForm" placeholder="Enter Email" style="max-width:300px;">
+    <input class="form-control" type="password" name="password" id="passwordForm" placeholder="Enter Password" style="max-width:300px;">
+    <button type="submit" class="btn btn-primary mt-3 mb-1">Login</button>
+    <br /><a class="label" href="/register">Register</a>
   </form>
 </div>
 
