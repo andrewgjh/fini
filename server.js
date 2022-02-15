@@ -34,34 +34,31 @@ app.use(
 app.use(express.static("public"));
 
 // Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
-
 // Imports the routers
-// Leaving the examples above - actual routes below
+
 const userHomeRoutes = require("./routes/login");
 const mainPageRoutes = require("./routes/main");
 const userRegister = require("./routes/register");
+// *** FOLLOW UP we may need to remove categories route ***
 const categoryRoutes = require("./routes/categories")
 const logoutRoutes = require("./routes/logout")
+const usersRoutes = require("./routes/users");
 
 // Tells express to use the routers as middleware
 // Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
-// Note: mount other resources here, using the same pattern above
+
+app.use("/users", usersRoutes(db));
 app.use("/login", userHomeRoutes(db));
 app.use("/", mainPageRoutes());
 app.use("/register", userRegister(db));
+// *** FOLLOW UP we may need to remove categories route ***
 app.use("/categories", categoryRoutes(db));
 app.use("/logout", logoutRoutes(db));
-
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
+
 app.get("/", (req, res) => {
   res.render("main");
 });
