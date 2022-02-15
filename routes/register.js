@@ -17,10 +17,10 @@ router.use(cookieSession({
 // TO TEST: $ curl -X POST -d 'email=test1@test.com' -d 'first_name=test1' -d 'last_name=test1' -d 'password=test1' http://localhost:8080/register
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    if (req.session.user.id) {
+    if (req.session.user) {
       return res.redirect("../");
     }
-    res.render("register");
+    return res.render("register");
   });
   router.post("/", (req, res) => {
     const values = [req.body.email, req.body.first_name, req.body.last_name, req.body.password]

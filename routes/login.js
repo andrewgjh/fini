@@ -18,7 +18,7 @@ router.use(cookieSession({
 // Post to /login asserts if a login is valid, sets a cookie and redirects to /main if true
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    if (req.session.user.id) {
+    if (req.session.user) {
       return res.redirect("../");
     }
     res.render("index");
