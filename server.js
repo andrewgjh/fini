@@ -40,7 +40,7 @@ const widgetsRoutes = require("./routes/widgets");
 
 // Imports the routers
 // Leaving the examples above - actual routes below
-const userHomeRoutes = require("./routes/userHome");
+const userHomeRoutes = require("./routes/login");
 const mainPageRoutes = require("./routes/main");
 const userRegister = require("./routes/register");
 const categoryRoutes = require("./routes/categories")
