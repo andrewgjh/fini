@@ -7,4 +7,10 @@ body {
   background: #495057;
   color: var(--color-primary);
 }
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
 
