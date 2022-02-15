@@ -26,14 +26,16 @@ const addItem = function (event) {
   }
 };
 
-const toggleCategory = function(){
-  const expanded = $(`#item-expand-5`).is(':checked');
+const toggleCategory = function(event){
+
+  const category = event.target.id.match(/\d+/)[0];
+  const expanded = $(`#item-expand-${category}`).is(':checked');
   if (!expanded) {
     $.ajax({
       type: 'GET',
-      url: `/to-do-items/5`,
+      url: `/to-do-items/${category}`,
     }).then((items) => {
-      const sectionMisc = $(`.to-do-list-5`);
+      const sectionMisc = $(`.to-do-list-${category}`);
       items.forEach((item) => {
         sectionMisc.append(`
         <ul class="to-do-5">
