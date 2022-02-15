@@ -27,5 +27,32 @@ const addItem = function (event) {
 };
 
 const toggleCategory = function(){
-  console.log('toggle');
+  const expanded = $(`#item-expand-5`).is(':checked');
+  if (!expanded) {
+    $.ajax({
+      type: 'GET',
+      url: `/to-do-items/5`,
+    }).then((items) => {
+      const sectionMisc = $(`.to-do-list-5`);
+      items.forEach((item) => {
+        sectionMisc.append(`
+        <ul class="to-do-5">
+        <li class="to-do-list-items">
+        <p>${item.title}</p>
+        <div>
+            <i class="fa-solid fa-exclamation"></i>
+            <i class="fa-solid fa-exclamation"></i>
+            <i class="fa-solid fa-exclamation"></i>
+            <i class="fa-solid fa-exclamation"></i>
+            <i class="fa-solid fa-exclamation"></i>
+            <input class='ml-5 mr-3 item-complete' id='checkbox-${item.id}' type="checkbox">
+        </div>
+      </li>
+      </ul>`);
+      })
+    });
+  } else {
+    const miscList = $(`.to-do-5`);
+    miscList.detach();
+  }
 }

@@ -12,7 +12,7 @@ const addToDoItem = (item, categoryId, userid)=>{
 
 const findItemsByCategory = (userid, category)=>{
   const queryStatement = `
-    SELECT title FROM to_do_items
+    SELECT id, title FROM to_do_items
     WHERE user_id = $1
     AND category_id = $2
     `
