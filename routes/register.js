@@ -32,7 +32,7 @@ module.exports = (db) => {
         // literally just takes the info as given and plugs it into the database
         // then automatically logs in by setting a cookie and redirecting to main page
         req.session.user = data.rows[0];
-        return res.redirect("/main");
+        return res.redirect("../");
       })
       .catch(err => {
         res
