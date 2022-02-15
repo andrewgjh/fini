@@ -6,7 +6,7 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Heebo:wght@100&family=Source+Sans+Pro:wght@300;700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Heebo:wght@100&family=Source+Sans+Pro:wght@300;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -26,143 +26,79 @@
   <%- include("partials/header") %>
   <!-- add a new to do list item - this line will be hidden when not clicked-->
   <section class="add-item mt-5 mb-5">
-    <form method="POST" action="/categories">
-      <input class="add-item-input" name="title" id="to-do" placeholder='e.g. Read Harry Potter'></input>
+    <form class='add-item-form' method="POST" action="/to-do-items">
+      <input class="add-item-input" name="toDo" id="toDo" placeholder='e.g. Read Harry Potter'></input>
     </form>
   </section>
 
-  <section class="to-do-list to-do-list-misc mb-1 mt-1">
+  <section class="to-do-list to-do-list-5 to-do-list-misc mb-1 mt-1">
     <header class='to-do-list-title'>
       <h3>to Do</h3>
     </header>
     <summary class="to-do-list-detail">
-      <figure class="to-do-list-detail-expand" id="list-expand-misc"><i class="fa-solid fa-chevron-down"></i></figure>
+      <label for="item-expand-5">
+        <input type="checkbox" class="expand-checkbox" id="item-expand-5">
+        <figure class="to-do-list-detail-expand" id="list-expand-5"><i id='5' class="fa-solid fa-chevron-down"></i></figure>
+      </label>
+
       <p class="to-do-list-detail-count">1/4</p>
     </summary>
-    <ul class="to-do">
-
-      <!-- <li class="to-do-list-items">
-        <p>Run a Marathon</p>
-        <div>
-          <form action="post">
-            <i class="fa-solid fa-exclamation"></i>
-            <i class="fa-solid fa-exclamation"></i>
-            <i class="fa-solid fa-exclamation"></i>
-            <i class="fa-solid fa-exclamation"></i>
-            <i class="fa-solid fa-exclamation"></i>
-            <input class='ml-5' type="checkbox">
-          </form>
-        </div>
-      </li>
-    </ul> -->
-
   </section>
 
-  <!-- template for each category-->
-  <section class="to-do-list to-do-list-watch mb-1 mt-1">
+  <section class="to-do-list to-do-list-1 to-do-list-watch mb-1 mt-1">
     <header class='to-do-list-title'>
       <h3>to Watch</h3>
     </header>
     <summary class="to-do-list-detail">
-      <figure class="to-do-list-detail-expand"><i class="fa-solid fa-chevron-down"></i></figure>
+      <label for="item-expand-1">
+        <input type="checkbox" class="expand-checkbox" id="item-expand-1">
+        <figure class="to-do-list-detail-expand" id="list-expand-1"><i id='1' class="fa-solid fa-chevron-down"></i></figure>
+      </label>
+
       <p class="to-do-list-detail-count">1/4</p>
     </summary>
-      <ul class="to-watch">
-
-        <!-- template for individual list items -->
-        <li class="to-do-list-items">
-          <p>Eternals - Complete in 2 weeks</p>
-          <div>
-              <form action="post">
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <input class='ml-5' type="checkbox">
-              </form>
-          </div>
-          </li>
-      </ul>
   </section>
 
-  <section class="to-do-list to-do-list-read mb-1 mt-1">
+  <section class="to-do-list to-do-list-2 to-do-list-read mb-1 mt-1">
     <header class='to-do-list-title'>
       <h3>to Read</h3>
     </header>
     <summary class="to-do-list-detail">
-      <figure class="to-do-list-detail-expand"><i class="fa-solid fa-chevron-down"></i></figure>
+      <label for="item-expand-2">
+        <input type="checkbox" class="expand-checkbox" id="item-expand-2">
+        <figure class="to-do-list-detail-expand" id="list-expand-2"><i id='2' class="fa-solid fa-chevron-down"></i></figure>
+      </label>
+
       <p class="to-do-list-detail-count">1/4</p>
     </summary>
-      <ul class="to-read">
-
-        <!-- template for individual list items -->
-        <li class="to-do-list-items">
-          <p>To Kill A Mockingbird - Complete in 4 weeks</p>
-          <div>
-              <form action="post">
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <input class='ml-5' type="checkbox">
-              </form>
-          </div>
-          </li>
-      </ul>
   </section>
-  <section class="to-do-list to-do-list-buy mb-1 mt-1">
+
+  <section class="to-do-list to-do-list-3 to-do-list-buy mb-1 mt-1">
     <header class='to-do-list-title'>
       <h3>to Buy</h3>
     </header>
     <summary class="to-do-list-detail">
-      <figure class="to-do-list-detail-expand"><i class="fa-solid fa-chevron-down"></i></figure>
+      <label for="item-expand-3">
+        <input type="checkbox" class="expand-checkbox" id="item-expand-3">
+        <figure class="to-do-list-detail-expand" id="list-expand-3"><i id='3' class="fa-solid fa-chevron-down"></i></figure>
+      </label>
+
       <p class="to-do-list-detail-count">1/4</p>
     </summary>
-      <ul class="to-buy">
-
-        <!-- template for individual list items -->
-        <li class="to-do-list-items">
-          <p>Humidifer</p>
-          <div>
-              <form action="post">
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <input class='ml-5' type="checkbox">
-              </form>
-          </div>
-          </li>
-      </ul>
   </section>
-  <section class="to-do-list to-do-list-eat mb-1 mt-1">
+
+  <section class="to-do-list to-do-list-4 to-do-list-eat mb-1 mt-1">
     <header class='to-do-list-title'>
       <h3>to Eat</h3>
     </header>
     <summary class="to-do-list-detail">
-      <figure class="to-do-list-detail-expand"><i class="fa-solid fa-chevron-down"></i></figure>
+      <label for="item-expand-4">
+        <input type="checkbox" class="expand-checkbox" id="item-expand-4">
+        <figure class="to-do-list-detail-expand" id="list-expand-4"><i id='4' class="fa-solid fa-chevron-down"></i></figure>
+      </label>
+
       <p class="to-do-list-detail-count">1/4</p>
     </summary>
-      <ul class="to-eat">
-
-        <!-- template for individual list items -->
-        <li class="to-do-list-items">
-          <p>The Keg</p>
-          <div>
-              <form action="post">
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <i class="fa-solid fa-exclamation"></i>
-                <input class='ml-5' type="checkbox">
-              </form>
-          </div>
-          </li>
-      </ul>
   </section>
 
   <!-- button to add new categories -->
