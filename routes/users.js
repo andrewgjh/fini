@@ -22,6 +22,7 @@ module.exports = (db) => {
   });
   router.post("/", (req, res) => {
     // For now this does nothing, stretch task would be to actually update user info
+    return res.render("user");
   })
   return router;
 };

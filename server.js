@@ -60,6 +60,9 @@ app.use("/logout", logoutRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
+  if (!req.session.user) {
+    return res.redirect("/login");
+  }
   res.render("main");
 });
 
