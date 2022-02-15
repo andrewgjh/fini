@@ -40,8 +40,7 @@ const userHomeRoutes = require("./routes/login");
 const mainPageRoutes = require("./routes/main");
 const userRegister = require("./routes/register");
 // *** FOLLOW UP we may need to remove categories route ***
-const categoryRoutes = require("./routes/categories")
-const logoutRoutes = require("./routes/logout")
+const logoutRoutes = require("./routes/logout");
 const usersRoutes = require("./routes/users");
 
 // Tells express to use the routers as middleware
@@ -52,7 +51,6 @@ app.use("/login", userHomeRoutes(db));
 app.use("/", mainPageRoutes());
 app.use("/register", userRegister(db));
 // *** FOLLOW UP we may need to remove categories route ***
-app.use("/categories", categoryRoutes(db));
 app.use("/logout", logoutRoutes(db));
 
 // Home page
