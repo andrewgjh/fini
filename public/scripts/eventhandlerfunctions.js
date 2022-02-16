@@ -36,6 +36,7 @@ const toggleItemComplete = function (event) {
     })
     .then(() => {
       $populateCounts();
+      $strikethrough(event.target, checked);
     });
 }
 
@@ -56,16 +57,35 @@ const toggleCategory = function(event){
         <li class="to-do-list-items">
         <p>${item.title}</p>
         <div>
-         <form>
-            <input class='ml-5 mr-3 item-complete' ${checkedBool} id='checkbox-${item.id}' type="checkbox">
-            </form>
+        <form>
+        <input class='ml-5 mr-3 item-complete' ${checkedBool} id='checkbox-${item.id}' type="checkbox">
+        </form>
         </div>
-      </li>
-      </ul>`);
+        </li>
+        </ul>`);
+        const checkID = document.getElementById(`checkbox-${item.id}`);
+        console.log("checkID: ", checkID);
+      // const checkTag = $(".to-do-list-items").find("input").html();
+      // console.log("Checktag: ", checkTag);
+      $strikethrough(checkID, item.is_completed);
       })
     });
   } else {
     const miscList = $(`.to-do-${category}`);
     miscList.detach();
+  }
+}
+
+const $strikethrough = function (itemID, check) {
+  // check is a boolean to see if the checkbox is checked.
+  console.log("itemdID in strikethrough ", itemID);
+  console.log("check in strikethrough ", check);
+  // References the title of the to-do-item.
+  const text = itemID.parentNode.parentNode.previousElementSibling;
+  console.log(text);
+  if (check) {
+    text.classList.add('strikethrough');
+  } else {
+    text.classList.remove('strikethrough');
   }
 }
