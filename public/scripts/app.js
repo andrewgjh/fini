@@ -4,7 +4,7 @@ $(function(on) {
   $('.add-item-form').on('submit', addItem);
   $('.to-do-list-detail-expand').on('click', toggleCategory);
   $('.add-item-form').on('submit', $populateCounts);
-  $('body').on('click', '.item-complete', toggleItemComplete);
+  $('body').on('change', '.change-category', changeCategory);
 });
 
 document.addEventListener('DOMContentLoaded', onReady);
@@ -34,3 +34,7 @@ function strikethrough(event) {
   }
 }
 //ml-5 mr-3 item-complete
+
+
+
+
