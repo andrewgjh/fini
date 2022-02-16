@@ -26,7 +26,7 @@ module.exports = () => {
   router.get('/to-do-items/:categoryid', (req,res)=>{
     const categoryId = req.params.categoryid;
     //  simulating grabbing userId (ATTENTION FOR LATER)
-    const userID = 1;
+    const userID = req.session.user.id;
     database.findItemsByCategory(userID, categoryId)
     .then((items)=>{res.json(items)});
   });
