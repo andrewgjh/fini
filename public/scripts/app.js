@@ -4,6 +4,7 @@ $(function(on) {
   $('.add-item-form').on('submit', addItem);
   $('.to-do-list-detail-expand').on('click', toggleCategory);
   $('.add-item-form').on('submit', $populateCounts);
+  $('body').on('click', '.item-complete', toggleItemComplete);
 });
 
 document.addEventListener('DOMContentLoaded', onReady);

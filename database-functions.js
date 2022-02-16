@@ -12,7 +12,7 @@ const addToDoItem = (item, categoryId, userid)=>{
 
 const findItemsByCategory = (userid, category)=>{
   const queryStatement = `
-    SELECT id, title FROM to_do_items
+    SELECT id, title, is_completed FROM to_do_items
     WHERE user_id = $1
     AND category_id = $2;
     `
@@ -20,6 +20,19 @@ const findItemsByCategory = (userid, category)=>{
     return db.query(queryStatement, queryParams)
     .then(data=>{
       return Promise.resolve(data.rows)});
+};
+
+
+const updateItem = function(postid, bool){
+  const queryStatement = `
+  UPDATE to_do_items
+  SET is_completed = $1
+  WHERE id = $2
+  `
+  const queryParams = [bool, postid]
+  return db.query(queryStatement, queryParams)
+  .then(data=>{
+    return Promise.resolve(data.rows)});
 };
 
 // input paramater is category id, ouput will be in the format { completed: '#', total: '#' }
@@ -38,4 +51,5 @@ module.exports={
   addToDoItem,
   findItemsByCategory,
   findItemCount,
+  updateItem
 };

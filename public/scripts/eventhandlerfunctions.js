@@ -26,8 +26,19 @@ const addItem = function (event) {
   }
 };
 
-const toggleCategory = function(event){
+const toggleItemComplete = function (event) {
+  const postItemID = event.target.id.match(/\d+/)[0];
+  const checked = event.target.checked;
+  $.ajax({
+      method: 'PUT',
+      url: "/to-do-items",
+      data: `postID=${postItemID}&bool=${checked}`
+    })
+    .then(() => {
+    });
+}
 
+const toggleCategory = function(event){
   const category = event.target.id.match(/\d+/)[0];
   const expanded = $(`#item-expand-${category}`).is(':checked');
   if (!expanded) {
@@ -37,19 +48,16 @@ const toggleCategory = function(event){
     }).then((items) => {
       const sectionMisc = $(`.to-do-list-${category}`);
       const section = $('.to-do');
-      //<ul class="to-do-5">
       items.forEach((item) => {
+        const checkedBool = item.is_completed ? 'checked' : '';
         sectionMisc.append(`
         <ul class="to-do-${category}">
         <li class="to-do-list-items">
         <p>${item.title}</p>
         <div>
-            <i class="fa-solid fa-exclamation"></i>
-            <i class="fa-solid fa-exclamation"></i>
-            <i class="fa-solid fa-exclamation"></i>
-            <i class="fa-solid fa-exclamation"></i>
-            <i class="fa-solid fa-exclamation"></i>
-            <input class="ml-5 mr-3 item-complete" id=checkbox-${item.id}' type="checkbox">
+         <form>
+            <input class='ml-5 mr-3 item-complete' ${checkedBool} id='checkbox-${item.id}' type="checkbox">
+            </form>
         </div>
       </li>
       </ul>`);

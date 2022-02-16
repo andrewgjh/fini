@@ -32,5 +32,17 @@ module.exports = () => {
   });
 
 
+  router.put("/to-do-items", (req, res) => {
+    const updateItemId = req.body.postID;
+    const completedItem =req.body.bool;
+    const newCategoryID = req.body.newCategory;
+
+    if (completedItem && updateItemId){
+      database.updateItem(updateItemId, completedItem)
+      .then((data)=>{res.json(data)});
+    }
+
+  });
+
   return router;
 };
