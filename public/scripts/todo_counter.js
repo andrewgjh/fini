@@ -1,6 +1,5 @@
 $(() => {
   $populateCounts();
-
 });
 
 const $populateCounts = () =>{

@@ -35,6 +35,7 @@ const toggleItemComplete = function (event) {
       data: `postID=${postItemID}&bool=${checked}`
     })
     .then(() => {
+      $populateCounts();
     });
 }
 
