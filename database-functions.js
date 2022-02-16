@@ -47,9 +47,23 @@ const findItemCount = (userID, catID) => {
 };
 
 
+const changeCategory = function(postid, newcategoryID){
+  const queryStatement = `
+  UPDATE to_do_items
+  SET category_id = $1
+  WHERE id = $2
+  RETURNING category_id
+  `
+  const queryParams = [newcategoryID, postid];
+  return db.query(queryStatement, queryParams)
+  .then(data=>{
+    return Promise.resolve(data.rows)});
+}
+
 module.exports={
   addToDoItem,
   findItemsByCategory,
   findItemCount,
-  updateItem
+  updateItem,
+  changeCategory
 };

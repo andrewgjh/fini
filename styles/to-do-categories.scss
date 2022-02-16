@@ -70,6 +70,28 @@
   }
 }
 
+.change-category{
+  background-color:transparent;
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+  background-size: auto 50%;
+  border-radius:2px;
+  border:none;
+  color:var(--color-white);
+  padding: .1em;
+  font-family: 'Zen Kaku Gothic Antique', sans-serif;
+  font-size:.7em;
+  // disable default appearance
+  outline: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  &::-ms-expand { display: none };
+  &:focus{
+    background: var(--color-grey-text);
+ }
+}
+
 .expand-checkbox{
   display:none;
   &:checked ~ .to-do-list-detail-expand{
@@ -82,3 +104,5 @@
 .strikethrough{
   text-decoration:line-through
 }
+
+

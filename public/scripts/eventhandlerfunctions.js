@@ -40,6 +40,19 @@ const toggleItemComplete = function (event) {
     });
 }
 
+const changeCategory = function (event) {
+  const currentCategory = event.target[1].className.match(/\d+/)[0];
+  const newCategory = event.target.value;
+  const itemID = event.target.name.match(/\d+/)[0];
+  moveCategory(itemID, newCategory)
+  .then((data) => {
+    const newCategory = data[0].category_id;
+    $(`#${newCategory}`).trigger('click');
+    $(`#${currentCategory}`).trigger('click');
+    $populateCounts();
+  });
+}
+
 const toggleCategory = function(event){
   const category = event.target.id.match(/\d+/)[0];
   const expanded = $(`#item-expand-${category}`).is(':checked');
@@ -52,14 +65,27 @@ const toggleCategory = function(event){
       const section = $('.to-do');
       items.forEach((item) => {
         const checkedBool = item.is_completed ? 'checked' : '';
+        const strikeIt = item.is_completed ? 'strikethrough' : '';
         sectionMisc.append(`
         <ul class="to-do-${category}">
         <li class="to-do-list-items">
-        <p>${item.title}</p>
+        <p class='${strikeIt}'>${item.title}</p>
         <div>
+<<<<<<< HEAD
         <form>
         <input class='ml-5 mr-3 item-complete' ${checkedBool} id='checkbox-${item.id}' type="checkbox">
         </form>
+=======
+        <select class="change-category" name="change-id-${item.id}">
+              <option value="">--Change Category--</option>
+              <option class ='currenCategory-${category}' value="1">to Watch</option>
+              <option class ='currenCategory-${category}' value="2">to Read</option>
+              <option class ='currenCategory-${category}' value="3">to Buy</option>
+              <option class ='currenCategory-${category}' value="4">to Eat</option>
+              <option value="5">to Do</option>
+            </select>
+            <input class='ml-5 mr-3 item-complete' ${checkedBool} id='checkbox-${item.id}' type="checkbox">
+>>>>>>> b263dac6822f6756f4928c9e2ce17b2fb4ede541
         </div>
         </li>
         </ul>`);
@@ -76,6 +102,7 @@ const toggleCategory = function(event){
   }
 }
 
+<<<<<<< HEAD
 const $strikethrough = function (itemID, check) {
   // check is a boolean to see if the checkbox is checked.
   console.log("itemdID in strikethrough ", itemID);
@@ -89,3 +116,6 @@ const $strikethrough = function (itemID, check) {
     text.classList.remove('strikethrough');
   }
 }
+=======
+
+>>>>>>> b263dac6822f6756f4928c9e2ce17b2fb4ede541

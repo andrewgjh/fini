@@ -36,7 +36,10 @@ module.exports = () => {
     const updateItemId = req.body.postID;
     const completedItem =req.body.bool;
     const newCategoryID = req.body.newCategory;
-
+    if (newCategoryID && updateItemId){
+      database.changeCategory(updateItemId, newCategoryID)
+      .then((data)=>{res.json(data)});
+    }
     if (completedItem && updateItemId){
       database.updateItem(updateItemId, completedItem)
       .then((data)=>{res.json(data)});
