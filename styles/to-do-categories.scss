@@ -4,6 +4,7 @@
   border-radius: 15px;
   padding: 1em;
   color: var(--color-white);
+
   &-title{
     display: flex;
     justify-content: center;
@@ -27,9 +28,14 @@
     box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.3);
   }
 
+  &:checked {
+    text-decoration:line-through;
+  }
+
   &-detail{
     display:flex;
     justify-content: space-between;
+
     &-expand{
       height:2em;
       width:2em;
@@ -65,4 +71,8 @@
 
 .expand-checkbox{
   display:none;
+}
+
+.strikethrough{
+  text-decoration:line-through
 }

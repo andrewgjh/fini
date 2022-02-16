@@ -36,6 +36,8 @@ const toggleCategory = function(event){
       url: `/to-do-items/${category}`,
     }).then((items) => {
       const sectionMisc = $(`.to-do-list-${category}`);
+      const section = $('.to-do');
+      //<ul class="to-do-5">
       items.forEach((item) => {
         sectionMisc.append(`
         <ul class="to-do-${category}">
@@ -47,7 +49,7 @@ const toggleCategory = function(event){
             <i class="fa-solid fa-exclamation"></i>
             <i class="fa-solid fa-exclamation"></i>
             <i class="fa-solid fa-exclamation"></i>
-            <input class='ml-5 mr-3 item-complete' id='checkbox-${item.id}' type="checkbox">
+            <input class="ml-5 mr-3 item-complete" id=checkbox-${item.id}' type="checkbox">
         </div>
       </li>
       </ul>`);
