@@ -44,6 +44,7 @@
       justify-content: center;
       align-items: center;
       background-color: rgba(0, 0, 0, 0.2);
+      transform:rotate(-90deg);
     }
     &-count{
       color:var(--color-grey-text)
@@ -71,6 +72,11 @@
 
 .expand-checkbox{
   display:none;
+  &:checked ~ .to-do-list-detail-expand{
+    transition: all .5s;
+    background: rgba(255, 0, 0, 0.4);
+    transform:rotate(0deg);
+  }
 }
 
 .strikethrough{
