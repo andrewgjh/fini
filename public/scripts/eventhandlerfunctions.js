@@ -36,6 +36,7 @@ const toggleItemComplete = function (event) {
     })
     .then(() => {
       $populateCounts();
+      $strikethrough(event.target, checked);
     });
 }
 
@@ -64,11 +65,10 @@ const toggleCategory = function(event){
       const section = $('.to-do');
       items.forEach((item) => {
         const checkedBool = item.is_completed ? 'checked' : '';
-        const strikeIt = item.is_completed ? 'strikethrough' : '';
         sectionMisc.append(`
         <ul class="to-do-${category}">
         <li class="to-do-list-items">
-        <p class='${strikeIt}'>${item.title}</p>
+        <p >${item.title}</p>
         <div>
         <select class="change-category" name="change-id-${item.id}">
               <option value="">--Change Category--</option>
@@ -80,8 +80,13 @@ const toggleCategory = function(event){
             </select>
             <input class='ml-5 mr-3 item-complete' ${checkedBool} id='checkbox-${item.id}' type="checkbox">
         </div>
-      </li>
-      </ul>`);
+        </li>
+        </ul>`);
+        const checkID = document.getElementById(`checkbox-${item.id}`);
+        console.log("checkID: ", checkID);
+      // const checkTag = $(".to-do-list-items").find("input").html();
+      // console.log("Checktag: ", checkTag);
+      $strikethrough(checkID, item.is_completed);
       })
     });
   } else {
@@ -89,6 +94,7 @@ const toggleCategory = function(event){
     miscList.detach();
   }
 }
+
 
 const $strikethrough = function (itemID, check) {
   // check is a boolean to see if the checkbox is checked.
@@ -103,5 +109,3 @@ const $strikethrough = function (itemID, check) {
     text.classList.remove('strikethrough');
   }
 }
-
-
