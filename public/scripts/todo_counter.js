@@ -12,7 +12,7 @@ const $populateCounts = () =>{
       type: 'GET',
       url: `/db/a/${catID}`,
     }).then((data) => {
-    $("section." + idName).find('p').html(`${data.completed} / ${data.total}`);
+    $("section." + idName).find('.to-do-list-detail-count').html(`${data.completed} / ${data.total}`);
     });
   }
 };
