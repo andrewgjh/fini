@@ -90,4 +90,18 @@ const toggleCategory = function(event){
   }
 }
 
+const $strikethrough = function (itemID, check) {
+  // check is a boolean to see if the checkbox is checked.
+  console.log("itemdID in strikethrough ", itemID);
+  console.log("check in strikethrough ", check);
+  // References the title of the to-do-item.
+  const text = itemID.parentNode.parentNode.previousElementSibling;
+  console.log(text);
+  if (check) {
+    text.classList.add('strikethrough');
+  } else {
+    text.classList.remove('strikethrough');
+  }
+}
+
 
