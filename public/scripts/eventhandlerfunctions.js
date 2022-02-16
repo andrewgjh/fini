@@ -14,12 +14,12 @@ const addItem = function (event) {
   if ($inputToDo) {
     event.preventDefault();
     const $itemToDo = $(this).serialize();
-    $.ajax({
-      method: 'POST',
-      url: "/to-do-items",
-      data: $itemToDo
-    });
-    $("form").get(0).reset();
+    postToDoItem($itemToDo)
+    .then(()=>{
+      $("form").get(0).reset();
+    })
+
+
   } else {
     event.preventDefault();
     alert('Cannot submit empty to do item.')
@@ -29,11 +29,7 @@ const addItem = function (event) {
 const toggleItemComplete = function (event) {
   const postItemID = event.target.id.match(/\d+/)[0];
   const checked = event.target.checked;
-  $.ajax({
-      method: 'PUT',
-      url: "/to-do-items",
-      data: `postID=${postItemID}&bool=${checked}`
-    })
+  completeItemBool(postItemID,checked)
     .then(() => {
       $populateCounts();
       strikethrough(event);
@@ -57,10 +53,8 @@ const toggleCategory = function(event){
   const category = event.target.id.match(/\d+/)[0];
   const expanded = $(`#item-expand-${category}`).is(':checked');
   if (!expanded) {
-    $.ajax({
-      type: 'GET',
-      url: `/to-do-items/${category}`,
-    }).then((items) => {
+    getItems(category)
+    .then((items) => {
       const sectionMisc = $(`.to-do-list-${category}`);
       const section = $('.to-do');
       items.forEach((item) => {

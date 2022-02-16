@@ -8,8 +8,6 @@ $(function(on) {
   $('body').on('click', '.item-complete', toggleItemComplete);
 });
 
-//ml-5 mr-3 item-complete
-
 
 
 
