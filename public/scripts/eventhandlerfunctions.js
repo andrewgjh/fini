@@ -40,7 +40,7 @@ const toggleCategory = function(event){
       //<ul class="to-do-5">
       items.forEach((item) => {
         sectionMisc.append(`
-        <ul class="to-do-5">
+        <ul class="to-do-${category}">
         <li class="to-do-list-items">
         <p>${item.title}</p>
         <div>
