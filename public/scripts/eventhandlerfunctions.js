@@ -36,7 +36,7 @@ const toggleItemComplete = function (event) {
     })
     .then(() => {
       $populateCounts();
-      $strikethrough(event.target, checked);
+      strikethrough(event);
     });
 }
 
@@ -65,10 +65,11 @@ const toggleCategory = function(event){
       const section = $('.to-do');
       items.forEach((item) => {
         const checkedBool = item.is_completed ? 'checked' : '';
+        const strikeIt = item.is_completed ? 'strikethrough' : '';
         sectionMisc.append(`
         <ul class="to-do-${category}">
         <li class="to-do-list-items">
-        <p >${item.title}</p>
+        <p class='${strikeIt}'>${item.title}</p>
         <div>
         <select class="change-category" name="change-id-${item.id}">
               <option value="">--Change Category--</option>
@@ -82,11 +83,6 @@ const toggleCategory = function(event){
         </div>
         </li>
         </ul>`);
-        const checkID = document.getElementById(`checkbox-${item.id}`);
-        console.log("checkID: ", checkID);
-      // const checkTag = $(".to-do-list-items").find("input").html();
-      // console.log("Checktag: ", checkTag);
-      $strikethrough(checkID, item.is_completed);
       })
     });
   } else {
@@ -104,6 +100,23 @@ const $strikethrough = function (itemID, check) {
   const text = itemID.parentNode.parentNode.previousElementSibling;
   console.log(text);
   if (check) {
+    text.classList.add('strikethrough');
+  } else {
+    text.classList.remove('strikethrough');
+  }
+}
+
+function strikethrough(event) {
+  // isChecked is a boolean to see if the checkbox is checked.
+  const isChecked = event.target.checked;
+
+  // event.target is the entire object.
+  const checkedTag = event.target
+
+  // References the title of the to-do-item.
+  const text = checkedTag.parentNode.previousElementSibling;
+
+  if (isChecked) {
     text.classList.add('strikethrough');
   } else {
     text.classList.remove('strikethrough');
