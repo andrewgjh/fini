@@ -12,7 +12,6 @@ const $populateCounts = () =>{
       type: 'GET',
       url: `/db/a/${catID}`,
     }).then((data) => {
-      console.log(data);
     $("section." + idName).find('p').html(`${data.completed} / ${data.total}`);
     });
   }

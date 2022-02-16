@@ -28,10 +28,8 @@ const findItemCount = (userID, catID) => {
   SELECT (SELECT COUNT(is_completed) FROM to_do_items WHERE is_completed IS TRUE AND user_id = $1 AND category_id = $2) as completed, COUNT(id) as total FROM to_do_items
   WHERE user_id = $1 AND category_id = $2;`
   const queryParams = [userID, catID];
-  console.log(queryStatement, queryParams);
   return db.query(queryStatement, queryParams)
     .then(data=>{
-      console.log(data.rows[0]);
       return Promise.resolve(data.rows[0])});
 };
 
