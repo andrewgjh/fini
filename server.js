@@ -40,6 +40,7 @@ const userHomeRoutes = require("./routes/login");
 const mainPageRoutes = require("./routes/main");
 const userRegister = require("./routes/register");
 // *** FOLLOW UP we may need to remove categories route ***
+const dbRoutes = require("./routes/db");
 const logoutRoutes = require("./routes/logout");
 const usersRoutes = require("./routes/users");
 
@@ -50,6 +51,7 @@ app.use("/users", usersRoutes(db));
 app.use("/login", userHomeRoutes(db));
 app.use("/", mainPageRoutes());
 app.use("/register", userRegister(db));
+app.use("/db", dbRoutes(db));
 // *** FOLLOW UP we may need to remove categories route ***
 app.use("/logout", logoutRoutes(db));
 

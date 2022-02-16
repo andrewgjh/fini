@@ -8,7 +8,7 @@ const addToDoItem = (item, categoryId, userid)=>{
   INSERT INTO to_do_items (title, category_id, user_id) VALUES ($1, $2, $3) RETURNING *;`
   const queryParams = [item, categoryId, userid]
   return db.query(queryStatement, queryParams);
-}
+};
 
 const findItemsByCategory = (userid, category)=>{
   const queryStatement = `
@@ -20,9 +20,24 @@ const findItemsByCategory = (userid, category)=>{
     return db.query(queryStatement, queryParams)
     .then(data=>{
       return Promise.resolve(data.rows)});
-}
+};
+
+// input paramater is category id, ouput will be in the format { completed: '#', total: '#' }
+const findItemCount = (userID, catID) => {
+  const queryStatement=`
+  SELECT (SELECT COUNT(is_completed) FROM to_do_items WHERE is_completed IS TRUE AND user_id = $1 AND category_id = $2) as completed, COUNT(id) as total FROM to_do_items
+  WHERE user_id = $1 AND category_id = $2;`
+  const queryParams = [userID, catID];
+  console.log(queryStatement, queryParams);
+  return db.query(queryStatement, queryParams)
+    .then(data=>{
+      console.log(data.rows[0]);
+      return Promise.resolve(data.rows[0])});
+};
+
 
 module.exports={
   addToDoItem,
   findItemsByCategory,
-}
+  findItemCount,
+};
