@@ -16,6 +16,7 @@ CREATE TABLE users (
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
+  opt_out BOOLEAN default FALSE,
   location_id INTEGER REFERENCES locations(id) ON DELETE CASCADE
 );
 
@@ -33,7 +34,7 @@ CREATE TABLE to_do_items (
   category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
   user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   priority SMALLINT,
-  deadline DATE,
+  deadline TIMESTAMP,
   is_completed BOOLEAN default FALSE,
   created_at TIMESTAMP,
   completed_at TIMESTAMP
