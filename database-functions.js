@@ -9,7 +9,7 @@ const getUser = (userid)=>{
   const queryParams = [userid]
   return db.query(queryStatement, queryParams)
   .then(data=>{
-    return Promise.resolve(data.rows[0])});;
+    return Promise.resolve(data.rows[0])});
 };
 
 const addToDoItem = (item, categoryId, userid)=>{
@@ -31,6 +31,15 @@ const findItemsByCategory = (userid, category)=>{
       return Promise.resolve(data.rows)});
 };
 
+const findItemDetails = (itemID) =>{
+  const queryStatement = `
+  SELECT * FROM to_do_items WHERE id = $1;`
+  const queryParams = [itemID];
+  return db.query(queryStatement, queryParams)
+  .then(data=>{
+    return Promise.resolve(data.rows[0])});
+};
+
 
 const updateItem = function(postid, bool){
   const queryStatement = `
@@ -44,7 +53,7 @@ const updateItem = function(postid, bool){
     return Promise.resolve(data.rows)});
 };
 
-// input paramater is category id, ouput will be in the format { completed: '#', total: '#' }
+// input paramater is user id and category id, ouput will be in the format { completed: '#', total: '#' }
 const findItemCount = (userID, catID) => {
   const queryStatement=`
   SELECT (SELECT COUNT(is_completed) FROM to_do_items WHERE is_completed IS TRUE AND user_id = $1 AND category_id = $2) as completed, COUNT(id) as total FROM to_do_items
@@ -87,5 +96,6 @@ module.exports={
   updateItem,
   changeCategory,
   deleteItem,
+  findItemDetails,
   getUser
 };

@@ -13,6 +13,13 @@ function getItems (categoryid){
   })
 }
 
+function getItemDetails(itemID){
+  return $.ajax({
+    type: 'GET',
+    url: `/db/b/${itemID}`,
+  })
+}
+
 function completeItemBool(postid, bool){
   return $.ajax({
     method: 'PUT',
