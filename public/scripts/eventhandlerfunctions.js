@@ -19,6 +19,7 @@ const addItem = function (event) {
       const category = data.rows[0].category_id;
       $(`#${category}`).trigger('click');
       $("form").get(0).reset();
+      $populateCounts();
     });
 
 
