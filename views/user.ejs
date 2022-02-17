@@ -16,13 +16,16 @@
 
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/network.js"></script>
   <script type="text/javascript" src="/scripts/eventhandlerfunctions.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/todo_counter.js"></script>
 </head>
 
 <body>
 
   <%- include("partials/header") %>
+
   <div class="flex-column my-3">
     <form action="/users" method="POST">
       <label for="passwordForm" class="label">Update Profile</label>

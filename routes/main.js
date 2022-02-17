@@ -14,6 +14,12 @@ router.use(cookieSession({
 
 module.exports = () => {
 
+  router.get("/getuser", (req, res) => {
+    const userID = req.session.user.id;
+    database.getUser(userID)
+    .then((items)=>{res.json(items)});
+  });
+
 
   router.post("/to-do-items", (req, res) => {
     const toDoItem = req.body.toDo;

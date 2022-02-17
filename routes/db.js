@@ -20,6 +20,13 @@ module.exports = (db) => {
     .then((items)=>{res.json(items)});
   });
 
+  // router.get("/a/user", (req, res) => {
+  //   const userID = req.session.user.id;
+  //   console.log(userID);
+  //   // database.getUser(userID)
+  //   // .then((items)=>{res.json(items)});
+  // });
+
   // TO TEST: curl -X POST -d 'title=groceries' -d 'category_id=1' -d 'user_id=2' -d 'deadline=2022-02-14' -d 'is_completed=FALSE' http://localhost:8080/categories
   // router.post("/", (req, res) => {
   //   console.log(req.session.user.id)
