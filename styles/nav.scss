@@ -30,6 +30,9 @@ nav {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  &-my-3 {
+    margin-top: 50px;
+  }
 }
 .user {
   background-color: var(--color-white);
