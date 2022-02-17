@@ -19,7 +19,7 @@ const sortCategories = function(query) {
   const tally = {
     countWatch: {
       categoryId: 1,
-      keywords: ["watch", "stream", "play"],
+      keywords: ["watch", "stream", "theatre", 'binge', 'channel', 'tv','imdb', 'rotten tomato','movie'],
       sum: function(callback, str) {
         let total = 0;
         for (const verb of this.keywords) {
@@ -30,7 +30,7 @@ const sortCategories = function(query) {
     },
     countRead: {
       categoryId: 2,
-      keywords: ["read", "book", "author"],
+      keywords: ["read", "book", "author", 'story', 'goodreads','epub', 'fiction', 'literature'],
       sum: function(callback, str) {
         let total = 0;
         for (const verb of this.keywords) {
@@ -41,7 +41,7 @@ const sortCategories = function(query) {
     },
     countBuy: {
       categoryId: 3,
-      keywords: ["buy", "purchase", "shop"],
+      keywords: ["buy", "purchase", "shop", 'commerce'],
       sum: function(callback, str) {
         let total = 0;
         for (const verb of this.keywords) {
@@ -52,7 +52,7 @@ const sortCategories = function(query) {
     },
     countEat: {
       categoryId: 4,
-      keywords: ["eat", "drink", "food"],
+      keywords: ["eat", "drink", "food", 'restaurant', 'meal', 'snack'],
       sum: function(callback, str) {
         let total = 0;
         for (const verb of this.keywords) {
