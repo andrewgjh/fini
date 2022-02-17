@@ -105,7 +105,10 @@ const toggleToDoListItem = function(event){
       const category = item.category_id;
         sectionMisc.append(`
         <div class="to-delete-details-${item_id} to-do-details mx-5">
-        <textarea placeholder="Enter a description">${description}</textarea>
+        <span class="to-do-details-description">
+          <label class='item-complete-label' for="textarea-item${item_id}">Description</label>
+          <textarea id="textarea-item${item_id}" placeholder="Enter a description">${description}</textarea>
+        </span>
         <select class="change-category" name="change-id-${item_id}">
               <option value="">--Change Category--</option>
               <option class ='currenCategory-${category}' value="1">to Watch</option>
