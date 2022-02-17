@@ -90,19 +90,18 @@ const toggleCategory = function(event){
 }
 
 const toggleToDoListItem = function(event){
-  const item_id = event.target.id.slice(4)
+  const item_id = event.target.id.slice(4);
   const expanded = $(`#item-details-expand-${item_id}`).is(':checked');
   console.log(expanded);
     if (!expanded) {
     getItemDetails(item_id)
     .then((item) => {
       const sectionMisc = $(`.to-do-details-${item_id}`);
-      const description = item.content;
+      const description = (item.content || "");
       const category = item.category_id;
-      // console.log(sectionMisc);
         sectionMisc.append(`
         <div class="to-delete-details-${item_id} to-do-details mx-5">
-        <textarea>${description}</textarea>
+        <textarea placeholder="Enter a description">${description}</textarea>
         <select class="change-category" name="change-id-${item_id}">
               <option value="">--Change Category--</option>
               <option class ='currenCategory-${category}' value="1">to Watch</option>
