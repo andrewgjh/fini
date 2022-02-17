@@ -2,11 +2,16 @@
   display:flex;
   justify-content: center;
   padding:1em;
+  // &-form{
+  //   display:flex;
+  //   align-items: center;
+  // }
   &-input{
     border-radius: 15px;
     border: none;
     padding:.5em;
     transition: all .2s;
+    width:22em;
     &:focus{
       outline:none;
       box-shadow: 0 2rem 3rem rgba(var(--color-black), $alpha: .3);
@@ -14,4 +19,22 @@
 
     }
   }
+}
+
+.loader {
+  border: .13em solid #f3f3f3; /* Light grey */
+  border-top: .13em solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  animation: spin 2s linear infinite;
+  margin-left: .5em;
+  position:relative;
+  bottom: 1.9em;
+  left: 20em;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
