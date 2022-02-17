@@ -13,12 +13,16 @@ const addItem = function (event) {
   const $inputToDo = $("#toDo").val()
   if ($inputToDo) {
     event.preventDefault();
+    const $loader = $('.sortingLoader');
     const $itemToDo = $(this).serialize();
+    $loader.addClass('loader');
     postToDoItem($itemToDo)
     .then((data)=>{
+      $loader.removeClass('loader');
       const category = data.rows[0].category_id;
       $(`#${category}`).trigger('click');
       $("form").get(0).reset();
+      $populateCounts();
     });
 
 

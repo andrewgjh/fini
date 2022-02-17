@@ -64,7 +64,7 @@ const sortCategories = function(query) {
   };
 
   let mostOccurences = {
-    categoryId: 0,
+    categoryId: 5,
     max: 0
   };
 
