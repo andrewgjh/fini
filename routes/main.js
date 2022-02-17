@@ -52,8 +52,6 @@ module.exports = () => {
       database.updateItem(updateItemId, completedItem)
       .then((data)=>{res.json(data)});
     }
-
   });
-
   return router;
 };
