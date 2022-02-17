@@ -18,25 +18,25 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/eventhandlerfunctions.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/slideshow.js"></script>
 </head>
-
 <body>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark">
       <a class="navbar flex-space-around navbar-brand"><img src="Images/Fini_logo.png" alt="logo" /></a>
     </nav>
   </header>
-<div class="flex-space-around my-3">
-  <form action="/login" method="POST">
-    <label for="emailForm" class="label">Login</label>
-    <input class="form-control my-3" type="email" name="email" id="emailForm" placeholder="Enter Email" style="max-width:300px;">
-    <input class="form-control" type="password" name="password" id="passwordForm" placeholder="Enter Password" style="max-width:300px;">
-    <button type="submit" class="btn btn-primary mt-3 mb-1">Login</button>
-    <br /><a class="label" href="/register">Register</a>
-  </form>
-</div>
 
-
+<br>
+  <div class="main">
+    <form class = "login-container" action="/login" method="POST">
+      <h2 class="sign">Sign in</h2>
+      <input class="form-control un" type="email" name="email" id="emailForm" placeholder="Email">
+      <input class="pass" type="password" name="password" id="passwordForm"  placeholder="Password">
+      <button type="submit" class="submit">Login</button>
+      <br>
+      <a class="label" href="/register">Or register here</a>
+    </form>
+  </div>
 </body>
-
 </html>
