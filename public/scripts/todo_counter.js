@@ -1,4 +1,5 @@
 $(() => {
+  $getUser();
   $populateCounts();
 });
 
@@ -15,3 +16,6 @@ const $populateCounts = () =>{
     });
   }
 };
+
+
+

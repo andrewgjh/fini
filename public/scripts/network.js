@@ -13,6 +13,14 @@ function getItems (categoryid){
   })
 }
 
+function postDescription (content, item_id) {
+  return $.ajax({
+    method: 'PUT',
+    url: '/db',
+    data: `itemID=${item_id}&content=${content}`
+    })
+}
+
 function getItemDetails(itemID){
   return $.ajax({
     type: 'GET',

@@ -25,6 +25,13 @@ module.exports = (db) => {
     .then((items)=>{res.json(items)});
   });
 
+  router.put("/", (req, res) => {
+    const content = req.body.content;
+    const itemID = req.body.itemID;
+    database.updateDescription(content, itemID)
+    .then((data)=>res.json(data));
+  })
+
 
   return router;
 };

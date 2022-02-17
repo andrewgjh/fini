@@ -105,7 +105,10 @@ const toggleToDoListItem = function(event){
       const category = item.category_id;
         sectionMisc.append(`
         <div class="to-delete-details-${item_id} to-do-details mx-5">
-        <textarea placeholder="Enter a description">${description}</textarea>
+        <span class="to-do-details-description">
+          <label class='item-complete-label' for="textarea-item${item_id}">Description</label>
+          <textarea id="textarea-item${item_id}" class="text-area-catch" placeholder="Enter a description">${description}</textarea>
+        </span>
         <select class="change-category" name="change-id-${item_id}">
               <option value="">--Change Category--</option>
               <option class ='currenCategory-${category}' value="1">to Watch</option>
@@ -122,6 +125,11 @@ const toggleToDoListItem = function(event){
   }
 }
 
+const postDescriptionHandler = function(event){
+  const item_id = event.target.id.slice(13);
+  const content = event.target.value;
+  postDescription(content, item_id);
+}
 
 const $strikethrough = function (itemID, check) {
   // check is a boolean to see if the checkbox is checked.
@@ -165,3 +173,14 @@ const deleteItemById = function (event) {
     $populateCounts();
   });
 }
+const $getUser = () =>{
+  $.ajax({
+    type: 'GET',
+    url: `/getuser`,
+  })
+  .then((user)=>{
+    console.log(user);
+    $('.user-photo').attr("src", user.photo_url||"https://i.pinimg.com/custom_covers/222x/85498161615209203_1636332751.jpg");
+    $('.user-caption').html(user.first_name);
+  })
+};
