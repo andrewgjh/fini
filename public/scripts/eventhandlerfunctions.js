@@ -79,8 +79,8 @@ const toggleCategory = function(event){
         <section class="to-do-details-${item.id}" ></section>
         </ul>
         `);
-        const checkboxID = `checkbox-${item.id}`;
-        $(checkboxID).prop('checked', true);
+        // const checkboxID = `checkbox-${item.id}`;
+        // $(checkboxID).prop('checked', false);
       })
     });
   } else {
