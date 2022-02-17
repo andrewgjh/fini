@@ -96,7 +96,7 @@
   display:none;
   &:checked ~ .to-do-list-detail-expand{
     transition: all .5s;
-    background: rgba(255, 0, 0, 0.4);
+    background: var(--color-tertiary);
     transform:rotate(0deg);
   }
 }

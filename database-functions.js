@@ -3,6 +3,15 @@ const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
 
+const getUser = (userid)=>{
+  const queryStatement = `
+  SELECT * FROM users WHERE id = $1`
+  const queryParams = [userid]
+  return db.query(queryStatement, queryParams)
+  .then(data=>{
+    return Promise.resolve(data.rows[0])});;
+};
+
 const addToDoItem = (item, categoryId, userid)=>{
   const queryStatement = `
   INSERT INTO to_do_items (title, category_id, user_id) VALUES ($1, $2, $3) RETURNING *;`
@@ -77,5 +86,6 @@ module.exports={
   findItemCount,
   updateItem,
   changeCategory,
-  deleteItem
+  deleteItem,
+  getUser
 };

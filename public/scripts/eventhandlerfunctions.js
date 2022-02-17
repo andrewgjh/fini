@@ -75,8 +75,7 @@ const toggleCategory = function(event){
               <option class ='currenCategory-${category}' value="4">to Eat</option>
               <option value="5">to Do</option>
             </select>
-            <input class='ml-5 mr-3 item-complete item-complete-input' ${checkedBool} id='checkbox-${item.id}' type="checkbox">
-            <label class='item-complete-label' for="item-complete-input"></label>
+            <input class='ml-5 mr-3 item-complete ' ${checkedBool} id='checkbox-${item.id}' type="checkbox">
             <i class="ml-3 fa-solid fa-trash-can item-delete" id="item-delete-${item.id}"></i>
         </div>
         </li>

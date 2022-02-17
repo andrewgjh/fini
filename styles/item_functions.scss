@@ -1,2 +1,19 @@
+.item-delete{
+  &:hover{
+    color: var(--color-tertiary);
+    animation: shake .8s ease 1;
+  }
+  &:active{
+    color: var(--color-tertiary);
+    transform:scale(1.2);
+    transition: all .2s ease;
+  }
+}
 
-
+@keyframes shake {
+  20% { transform: scale(1.2); }
+  45%, 60% { transform: rotate(-20deg) scale(1.2); }
+  50% { transform: rotate(20deg) scale(1.2); }
+  70% { transform: rotate(0deg) scale(1.2); }
+  100% { transform: scale(1); }
+}

@@ -16,6 +16,7 @@ CREATE TABLE users (
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
+  photo_url VARCHAR(500),
   opt_out BOOLEAN default FALSE,
   location_id INTEGER REFERENCES locations(id) ON DELETE CASCADE
 );
