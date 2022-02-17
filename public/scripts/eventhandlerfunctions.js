@@ -64,27 +64,57 @@ const toggleCategory = function(event){
         const strikeIt = item.is_completed ? 'strikethrough' : '';
         sectionMisc.append(`
         <ul class="to-do-${category} to-delete-${item.id}">
-        <li class="to-do-list-items">
+        <li class="to-do-details-items">
+        <label for="sub-item-expand-${item.id}" class="to-do-details-detail">
+        <input type="checkbox" class="sub-expand-checkbox" id="item-details-expand-${item.id}">
+        <figure class="to-do-details-detail-expand mx-3" id="list-details-expand-${item.id}"><i id="item${item.id}" class="fa-solid fa-chevron-down"></i></figure>
         <p class='${strikeIt}'>${item.title}</p>
+        </label>
         <div>
-        <select class="change-category" name="change-id-${item.id}">
+            <input class='ml-3 item-complete item-complete-input' ${checkedBool} id='checkbox-${item.id}' type="checkbox">
+            <label class='item-complete-label' for="item-complete-input"></label>
+            <i class="ml-3 fa-solid fa-trash-can item-delete" id="item-delete-${item.id}"></i>
+        </div>
+        </li>
+        <section class="to-do-details-${item.id}" ></section>
+        </ul>
+        `);
+        const checkboxID = `checkbox-${item.id}`;
+        $(checkboxID).prop('checked', true);
+      })
+    });
+  } else {
+    const miscList = $(`.to-do-${category}`);
+    miscList.detach();
+  }
+}
+
+const toggleToDoListItem = function(event){
+  const item_id = event.target.id.slice(4)
+  const expanded = $(`#item-details-expand-${item_id}`).is(':checked');
+  console.log(expanded);
+    if (!expanded) {
+    getItemDetails(item_id)
+    .then((item) => {
+      const sectionMisc = $(`.to-do-details-${item_id}`);
+      const description = item.content;
+      const category = item.category_id;
+      // console.log(sectionMisc);
+        sectionMisc.append(`
+        <div class="to-delete-details-${item_id} to-do-details mx-5">
+        <textarea>${description}</textarea>
+        <select class="change-category" name="change-id-${item_id}">
               <option value="">--Change Category--</option>
               <option class ='currenCategory-${category}' value="1">to Watch</option>
               <option class ='currenCategory-${category}' value="2">to Read</option>
               <option class ='currenCategory-${category}' value="3">to Buy</option>
               <option class ='currenCategory-${category}' value="4">to Eat</option>
               <option value="5">to Do</option>
-            </select>
-            <input class='ml-3 item-complete item-complete-input' ${checkedBool} id='checkbox-${item.id}' type="checkbox">
-            <label class='item-complete-label' for="item-complete-input"></label>
-            <i class="ml-3 fa-solid fa-trash-can item-delete" id="item-delete-${item.id}"></i>
-        </div>
-        </li>
-        </ul>`);
-      })
+            </select></div>
+            `);
     });
   } else {
-    const miscList = $(`.to-do-${category}`);
+    const miscList = $(`.to-delete-details-${item_id}`);
     miscList.detach();
   }
 }
@@ -96,7 +126,7 @@ const $strikethrough = function (itemID, check) {
   console.log("check in strikethrough ", check);
   // References the title of the to-do-item.
   const text = itemID.parentNode.parentNode.previousElementSibling;
-  console.log(text);
+  console.log("strikethrough1: ", text);
   if (check) {
     text.classList.add('strikethrough');
   } else {
@@ -112,7 +142,7 @@ function strikethrough(event) {
   const checkedTag = event.target
 
   // References the title of the to-do-item.
-  const text = checkedTag.parentNode.previousElementSibling;
+  const text = checkedTag.parentNode.previousElementSibling.lastElementChild;
 
   if (isChecked) {
     text.classList.add('strikethrough');
