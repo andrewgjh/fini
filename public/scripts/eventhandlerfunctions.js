@@ -131,19 +131,6 @@ const postDescriptionHandler = function(event){
   postDescription(content, item_id);
 }
 
-const $strikethrough = function (itemID, check) {
-  // check is a boolean to see if the checkbox is checked.
-  console.log("itemdID in strikethrough ", itemID);
-  console.log("check in strikethrough ", check);
-  // References the title of the to-do-item.
-  const text = itemID.parentNode.parentNode.previousElementSibling;
-  console.log("strikethrough1: ", text);
-  if (check) {
-    text.classList.add('strikethrough');
-  } else {
-    text.classList.remove('strikethrough');
-  }
-}
 
 function strikethrough(event) {
   // isChecked is a boolean to see if the checkbox is checked.
@@ -179,7 +166,6 @@ const $getUser = () =>{
     url: `/getuser`,
   })
   .then((user)=>{
-    console.log(user);
     $('.user-photo').attr("src", user.photo_url||"https://i.pinimg.com/custom_covers/222x/85498161615209203_1636332751.jpg");
     $('.user-caption').html(user.first_name);
   })

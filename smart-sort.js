@@ -16,7 +16,7 @@ const countOccurence = function(str, word) {
 //this function takes in a queryString and uses a search api to return the most likely category it fells into given predefined keywords
 const sortCategories = function(query) {
 
-  let tally = {
+  const tally = {
     countWatch: {
       categoryId: 1,
       keywords: ["watch", "stream", "play"],
@@ -70,10 +70,10 @@ const sortCategories = function(query) {
 
   let apiURL = `https://serpapi.com/search.json?engine=google&q=${query}&api_key=${apiKey}`;
 
-  axios.get(apiURL)
+  const testAPI = 'https://api.coingecko.com/api/v3/exchange_rates'
+  return axios.get(apiURL)
     .then(function(response) {
       const googleResponse = JSON.stringify(response.data);
-      console.log(googleResponse);
       for (let key in tally) {
         let total = tally[key].sum(countOccurence, googleResponse);
         if (total > mostOccurences.max) {
