@@ -26,41 +26,18 @@
       <a class="navbar flex-space-around navbar-brand"><img src="Images/Fini_logo.png" alt="logo" /></a>
     </nav>
   </header>
-<div class="flex-space-around my-3">
+
+<div class="register-container">
   <form action="/register" method="POST">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputEmail">Email</label>
-        <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword">Password</label>
-        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputFirstName">First Name</label>
-        <input type="text" name="first_name" class="form-control" id="inputFirstName" placeholder="First Name">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputLastName">Last Name</label>
-        <input type="text" name="last_name" class="form-control" id="inputLastName" placeholder="Last Name">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputCity">City</label>
-        <input type="text" name="city" class="form-control" id="inputCity" placeholder="City">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputCountry">Country</label>
-        <input type="text" name="country" class="form-control" id="inputCountry" placeholder="Country">
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Register</button>
+    <h2 class="sign">Register</h2>
+    <input type="email" name="email" class="form-control un" id="inputEmail" placeholder="Email">
+    <input type="password" name="password" class="form-control un" id="inputPassword" placeholder="Password">
+    <input type="text" name="first_name" class="form-control un" id="inputFirstName" placeholder="First Name">
+    <input type="text" name="last_name" class="form-control un" id="inputLastName" placeholder="Last Name">
+    <input type="text" name="city" class="form-control un" id="inputCity" placeholder="City">
+    <input type="text" name="country" class="form-control un" id="inputCountry" placeholder="Country">
+    <button type="submit" class="submit">Register</button>
   </form>
 </div>
 </body>
-
 </html>
