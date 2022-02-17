@@ -60,10 +60,22 @@ const changeCategory = function(postid, newcategoryID){
     return Promise.resolve(data.rows)});
 }
 
+const deleteItem = function(postid){
+  const queryStatement = `
+  DELETE FROM to_do_items
+  WHERE id = $1
+  `
+  const queryParams = [postid];
+  return db.query(queryStatement, queryParams)
+  .then(data=>{
+    return Promise.resolve(data.rows)});
+}
+
 module.exports={
   addToDoItem,
   findItemsByCategory,
   findItemCount,
   updateItem,
-  changeCategory
+  changeCategory,
+  deleteItem
 };

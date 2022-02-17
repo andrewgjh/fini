@@ -15,9 +15,11 @@ const addItem = function (event) {
     event.preventDefault();
     const $itemToDo = $(this).serialize();
     postToDoItem($itemToDo)
-    .then(()=>{
+    .then((data)=>{
+      const category = data.rows[0].category_id;
+      $(`#${category}`).trigger('click');
       $("form").get(0).reset();
-    })
+    });
 
 
   } else {
@@ -61,7 +63,7 @@ const toggleCategory = function(event){
         const checkedBool = item.is_completed ? 'checked' : '';
         const strikeIt = item.is_completed ? 'strikethrough' : '';
         sectionMisc.append(`
-        <ul class="to-do-${category}">
+        <ul class="to-do-${category} to-delete-${item.id}">
         <li class="to-do-list-items">
         <p class='${strikeIt}'>${item.title}</p>
         <div>
@@ -73,7 +75,9 @@ const toggleCategory = function(event){
               <option class ='currenCategory-${category}' value="4">to Eat</option>
               <option value="5">to Do</option>
             </select>
-            <input class='ml-5 mr-3 item-complete' ${checkedBool} id='checkbox-${item.id}' type="checkbox">
+            <input class='ml-5 mr-3 item-complete item-complete-input' ${checkedBool} id='checkbox-${item.id}' type="checkbox">
+            <label class='item-complete-label' for="item-complete-input"></label>
+            <i class="ml-3 fa-solid fa-trash-can item-delete" id="item-delete-${item.id}"></i>
         </div>
         </li>
         </ul>`);
@@ -115,4 +119,16 @@ function strikethrough(event) {
   } else {
     text.classList.remove('strikethrough');
   }
+}
+
+const deleteItemById = function (event) {
+  const itemID = event.target.id.match(/\d+/)[0];
+  $.ajax({
+    method: 'DELETE',
+    url: "/to-do-items",
+    data: `postID=${itemID}`
+  }).then(()=>{
+    $(`.to-delete-${itemID}`).fadeOut();
+    $populateCounts();
+  });
 }

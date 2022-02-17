@@ -6,6 +6,7 @@ $(function(on) {
   $('.add-item-form').on('submit', $populateCounts);
   $('body').on('change', '.change-category', changeCategory);
   $('body').on('click', '.item-complete', toggleItemComplete);
+  $('body').on('click', '.item-delete', deleteItemById);
 });
 
 

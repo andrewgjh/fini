@@ -20,7 +20,8 @@ module.exports = () => {
     //simulating getting category ID (ADD IN SMART SORT FUNCTION LATER)
     const categoryId = 5;
     // inserting item into database
-    database.addToDoItem(toDoItem, categoryId, userID);
+    database.addToDoItem(toDoItem, categoryId, userID)
+    .then((data)=>res.json(data));
   });
 
   router.get('/to-do-items/:categoryid', (req,res)=>{
@@ -31,6 +32,13 @@ module.exports = () => {
     .then((items)=>{res.json(items)});
   });
 
+
+  router.delete("/to-do-items", (req, res) => {
+    const deleteItem = req.body.postID;
+    console.log(deleteItem);
+    database.deleteItem(deleteItem)
+    .then((data)=>{res.send(data)});
+  });
 
   router.put("/to-do-items", (req, res) => {
     const updateItemId = req.body.postID;
