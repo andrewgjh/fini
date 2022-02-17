@@ -173,3 +173,14 @@ const deleteItemById = function (event) {
     $populateCounts();
   });
 }
+const $getUser = () =>{
+  $.ajax({
+    type: 'GET',
+    url: `/getuser`,
+  })
+  .then((user)=>{
+    console.log(user);
+    $('.user-photo').attr("src", user.photo_url||"https://i.pinimg.com/custom_covers/222x/85498161615209203_1636332751.jpg");
+    $('.user-caption').html(user.first_name);
+  })
+};
