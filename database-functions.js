@@ -31,6 +31,17 @@ const findItemDetails = (itemID) =>{
     return Promise.resolve(data.rows[0])});
 };
 
+const updateDescription = function(content, item_id){
+  const queryStatement = `
+  UPDATE to_do_items
+  SET content = $1
+  WHERE id = $2
+  RETURNING content;`
+  const queryParams = [content, item_id];
+  return db.query(queryStatement, queryParams)
+    .then(data=>{
+      return Promise.resolve(data.rows)});
+};
 
 const updateItem = function(postid, bool){
   const queryStatement = `
@@ -87,5 +98,6 @@ module.exports={
   updateItem,
   changeCategory,
   deleteItem,
-  findItemDetails
+  findItemDetails,
+  updateDescription
 };

@@ -107,7 +107,7 @@ const toggleToDoListItem = function(event){
         <div class="to-delete-details-${item_id} to-do-details mx-5">
         <span class="to-do-details-description">
           <label class='item-complete-label' for="textarea-item${item_id}">Description</label>
-          <textarea id="textarea-item${item_id}" placeholder="Enter a description">${description}</textarea>
+          <textarea id="textarea-item${item_id}" class="text-area-catch" placeholder="Enter a description">${description}</textarea>
         </span>
         <select class="change-category" name="change-id-${item_id}">
               <option value="">--Change Category--</option>
@@ -125,6 +125,11 @@ const toggleToDoListItem = function(event){
   }
 }
 
+const postDescriptionHandler = function(event){
+  const item_id = event.target.id.slice(13);
+  const content = event.target.value;
+  postDescription(content, item_id);
+}
 
 const $strikethrough = function (itemID, check) {
   // check is a boolean to see if the checkbox is checked.
