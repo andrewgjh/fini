@@ -91,9 +91,13 @@ const toggleCategory = function(event){
 
 const toggleToDoListItem = function(event){
   const item_id = event.target.id.slice(4);
+  if ($(`#item-details-expand-${item_id}`).is(':checked')) {
+    $(`#item-details-expand-${item_id}`).prop('checked', false);
+  } else {
+    $(`#item-details-expand-${item_id}`).prop('checked', true);
+  }
   const expanded = $(`#item-details-expand-${item_id}`).is(':checked');
-  console.log(expanded);
-    if (!expanded) {
+    if (expanded) {
     getItemDetails(item_id)
     .then((item) => {
       const sectionMisc = $(`.to-do-details-${item_id}`);
