@@ -2,13 +2,16 @@
 $(function(on) {
   $('.navbar-add-todo').on('click', onClickAddItem);
   $('.add-item-form').on('submit', addItem);
-  $('.to-do-list-detail-expand').on('click', toggleCategory);
+  $('body').on('click', '.to-do-list-detail-expand', toggleCategory);
   $('body').on('click', '.to-do-details-detail-expand', toggleToDoListItem);
-  $('.add-item-form').on('submit', $populateCounts);
+
   $('body').on('change', '.change-category', changeCategory);
   $('body').on('click', '.item-complete', toggleItemComplete);
   $('body').on('click', '.item-delete', deleteItemById);
   $('body').on('input', '.text-area-catch', postDescriptionHandler);
+  $('.to-do-list-add-category').on('click', newCategoryName);
+  $('body').on('submit', '.add-category-form', addCategory);
+  getAllUserCategories();
 });
 
 

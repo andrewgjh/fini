@@ -1,3 +1,28 @@
+const newCategoryName = function (event) {
+  newCategoryForm().insertBefore($(this));
+}
+
+const addCategory = function (event) {
+  event.preventDefault();
+  const newCategoryName = $(this).find('.add-category-input').val();
+  $('.add-category-form').detach();
+  $.ajax({
+    method: 'POST',
+    url: "/categories",
+    data: `categoryName=${newCategoryName}`,
+  }).then((data) => {
+    createSection(data).insertBefore($('.to-do-list-add-category'));
+  });
+}
+
+const getAllUserCategories = function () {
+  getCategories().then((categories) => {
+    categories.forEach((category) => {
+      createSection(category).insertBefore($('.to-do-list-add-category'));
+    })
+  })
+}
+
 const onClickAddItem = () => {
   const $compose = $('.add-item');
   const isHidden = $compose.css("display") === "none";
@@ -19,7 +44,7 @@ const addItem = function (event) {
       .then((data) => {
         $loader.removeClass('loader');
         const category = data.rows[0].category_id;
-        if(!$(`#item-expand-${category}`).is(':checked')){
+        if (!$(`#item-expand-${category}`).is(':checked')) {
           $(`#${category}`).trigger('click');
           $(`#${category}`).trigger('click');
         }
@@ -104,27 +129,35 @@ const toggleToDoListItem = function (event) {
   }
   const expanded = $(`#item-details-expand-${item_id}`).is(':checked');
   if (expanded) {
-    getItemDetails(item_id)
-      .then((item) => {
-        const sectionMisc = $(`.to-do-details-${item_id}`);
-        const description = (item.content || "");
-        const category = item.category_id;
-        sectionMisc.append(`
-        <div class="to-delete-details-${item_id} to-do-details mx-5">
-        <span class="to-do-details-description">
-          <label class='item-complete-label' for="textarea-item${item_id}">Description</label>
-          <textarea id="textarea-item${item_id}" class="text-area-catch" placeholder="Enter a description">${description}</textarea>
-        </span>
-        <select class="change-category" name="change-id-${item_id}">
-              <option value="">--Change Category--</option>
-              <option class ='currenCategory-${category}' value="1">to Watch</option>
-              <option class ='currenCategory-${category}' value="2">to Read</option>
-              <option class ='currenCategory-${category}' value="3">to Buy</option>
-              <option class ='currenCategory-${category}' value="4">to Eat</option>
-              <option value="5">to Do</option>
-            </select></div>
-            `);
+
+    $.when(getCategories(), getItemDetails(item_id)).done(function (categories, items) {
+      let item = items[0]
+      const sectionMisc = $(`.to-do-details-${item_id}`);
+      const description = (item.content || "");
+      const category = item.category_id;
+      let selectOptions = "";
+      categories[0].forEach((listCategory) => {
+        selectOptions += `<option class ='currentCategory-${category}' value="${listCategory.id}">${listCategory.name}</option>
+      `
       });
+      sectionMisc.append(`
+      <div class="to-delete-details-${item_id} to-do-details mx-5">
+      <span class="to-do-details-description">
+        <label class='item-complete-label' for="textarea-item${item_id}">Description</label>
+        <textarea id="textarea-item${item_id}" class="text-area-catch" placeholder="Enter a description">${description}</textarea>
+      </span>
+      <select class="change-category" name="change-id-${item_id}">
+            <option value="">--Change Category--</option>
+            <option class ='currenCategory-${category}' value="1">to Watch</option>
+            <option class ='currenCategory-${category}' value="2">to Read</option>
+            <option class ='currenCategory-${category}' value="3">to Buy</option>
+            <option class ='currenCategory-${category}' value="4">to Eat</option>
+            <option value="5">to Do</option>
+            ${selectOptions}
+          </select></div>
+          `);
+
+    });
   } else {
     const miscList = $(`.to-delete-details-${item_id}`);
     miscList.detach();

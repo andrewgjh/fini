@@ -58,3 +58,10 @@ function getCurrentUser(){
     url: `/getuser`,
   })
 };
+
+function getCategories(){
+  return $.ajax({
+    method: 'GET',
+    url: "/categories"
+  });
+}

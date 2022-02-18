@@ -43,6 +43,7 @@ const userRegister = require("./routes/register");
 const dbRoutes = require("./routes/db");
 const logoutRoutes = require("./routes/logout");
 const usersRoutes = require("./routes/users");
+const categoriesRoutes = require("./routes/categories");
 
 // Tells express to use the routers as middleware
 // Mount all resource routes
@@ -50,6 +51,7 @@ const usersRoutes = require("./routes/users");
 app.use("/users", usersRoutes(db));
 app.use("/login", userHomeRoutes(db));
 app.use("/", mainPageRoutes());
+app.use("/categories", categoriesRoutes());
 app.use("/register", userRegister(db));
 app.use("/db", dbRoutes(db));
 // *** FOLLOW UP we may need to remove categories route ***

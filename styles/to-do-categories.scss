@@ -24,6 +24,9 @@
   &-misc{
     background-color: var(--misc-list-bg-color);
   }
+  &-more{
+    background-color: var(--misc-list-bg-more);
+  }
   &:hover{
     box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.3);
   }
@@ -184,4 +187,20 @@ input[type=checkbox].item-complete-input:checked:before {
   font-size: 2.4em;
   text-align: center;
   line-height: 0.6em;
+}
+
+.add-category{
+  &-form{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &-input{
+    margin-top: 1em;
+    background:transparent;
+    border:none;
+    outline:none;
+    text-align: center;
+    caret-color: rgba(255, 0, 0, 0.4);
+  }
 }

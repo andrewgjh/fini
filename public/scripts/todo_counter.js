@@ -1,6 +1,7 @@
 $(() => {
   $getUser();
   $populateCounts();
+  $('.add-item-form').on('submit', $populateCounts);
 });
 
 const $populateCounts = () =>{

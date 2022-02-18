@@ -100,6 +100,28 @@ const deleteItem = function(postid){
     return Promise.resolve(data.rows)});
 }
 
+const getCategory = (userid) => {
+  const queryStatement=`
+  SELECT * FROM categories
+  WHERE user_id = $1;`
+  const queryParams = [userid];
+  return db.query(queryStatement, queryParams)
+    .then(data=>{
+      return Promise.resolve(data.rows)});
+};
+
+const addCategory = function (categoryName, userid){
+  const queryStatement = `
+  INSERT INTO categories (name, user_id)
+  VALUES ($1, $2)
+  RETURNING *;
+  `
+  const queryParams = [categoryName, userid];
+  return db.query(queryStatement, queryParams)
+  .then(data=>{
+    return Promise.resolve(data.rows[0])});
+}
+
 module.exports={
   addToDoItem,
   findItemsByCategory,
@@ -109,5 +131,7 @@ module.exports={
   deleteItem,
   findItemDetails,
   updateDescription,
-  getUser
+  getUser,
+  getCategory,
+  addCategory
 };
