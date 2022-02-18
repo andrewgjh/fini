@@ -6,9 +6,9 @@ Fini is a smart to-do list web application that uses a Google Search API to inst
 
 !["The main page of Fini"](https://github.com/andrewgjh/fini/blob/master/public/Images/finiFront.PNG?raw=true)
 
-!["The login page of Fini"](https://github.com/andrewgjh/fini/blob/master/public/Images/FiniSignIn.PNG?raw=true)
-
 !["Drop-down functionality of Fini"](https://github.com/andrewgjh/fini/blob/master/public/Images/dropdown%20functionality.PNG?raw=true)
+
+!["The login page of Fini"](https://github.com/andrewgjh/fini/blob/master/public/Images/FiniSignIn.PNG?raw=true)
 
 ## Getting Started
 
