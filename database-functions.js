@@ -154,5 +154,5 @@ module.exports={
   getCategory,
   addCategory,
   getAllCategories,
-  findUserByEmail
+  findUserByEmail,
 };
