@@ -130,6 +130,17 @@ const getAllCategories = function(){
     return Promise.resolve(data.rows)});
 }
 
+const findUserByEmail = function(email){
+  const queryStatement = `
+  SELECT * FROM users
+  WHERE email = $1;`
+  const queryParams = [email];
+
+  return db.query(queryStatement, queryParams)
+  .then(data=>{
+    return Promise.resolve(data.rows)});
+}
+
 module.exports={
   addToDoItem,
   findItemsByCategory,
@@ -142,5 +153,6 @@ module.exports={
   getUser,
   getCategory,
   addCategory,
-  getAllCategories
+  getAllCategories,
+  findUserByEmail
 };

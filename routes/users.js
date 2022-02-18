@@ -1,7 +1,7 @@
 // USER ROUTES
 
 const express = require('express');
-const { DatabaseError } = require('pg');
+
 const router  = express.Router();
 const cookieSession = require('cookie-session');
 
@@ -13,7 +13,7 @@ router.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 
-module.exports = (db) => {
+module.exports = () => {
   router.get("/", (req, res) => {
     if (!req.session.user) {
       return res.redirect("../login");

@@ -48,18 +48,15 @@ const categoriesRoutes = require("./routes/categories");
 // Tells express to use the routers as middleware
 // Mount all resource routes
 
-app.use("/users", usersRoutes(db));
-app.use("/login", userHomeRoutes(db));
+app.use("/users", usersRoutes());
+app.use("/login", userHomeRoutes());
 app.use("/", mainPageRoutes());
 app.use("/categories", categoriesRoutes());
 app.use("/register", userRegister(db));
 app.use("/db", dbRoutes(db));
-// *** FOLLOW UP we may need to remove categories route ***
 app.use("/logout", logoutRoutes(db));
 
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
+
 
 app.get("/", (req, res) => {
   if (!req.session.user) {
