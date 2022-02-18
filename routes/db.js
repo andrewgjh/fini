@@ -25,6 +25,12 @@ module.exports = (db) => {
     .then((items)=>{res.json(items)});
   });
 
+  router.get("/c", (req, res) => {
+    database.getAllCategories()
+    .then((categories)=>{
+      res.json(categories)});
+  });
+
   router.put("/", (req, res) => {
     const content = req.body.content;
     const itemID = req.body.itemID;

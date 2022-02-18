@@ -122,6 +122,14 @@ const addCategory = function (categoryName, userid){
     return Promise.resolve(data.rows[0])});
 }
 
+const getAllCategories = function(){
+  const queryStatement = `
+  SELECT id FROM categories;`
+  return db.query(queryStatement)
+  .then(data=>{
+    return Promise.resolve(data.rows)});
+}
+
 module.exports={
   addToDoItem,
   findItemsByCategory,
@@ -133,5 +141,6 @@ module.exports={
   updateDescription,
   getUser,
   getCategory,
-  addCategory
+  addCategory,
+  getAllCategories
 };
