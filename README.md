@@ -1,9 +1,6 @@
 # fini - a smart to do list
-=========
 
-## The Fini Project
-
-Fini is a smart to-do list web application that can instantly organize to-do list items into categories. 
+Fini is a smart to-do list web application that uses a Google Search API to instantly organize to-do list items into categories. You can also change categories, strikethrough completed items, and delete items. 
 
 ## Final Product
 
