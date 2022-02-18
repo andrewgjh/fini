@@ -17,7 +17,7 @@ Fini is a smart to-do list web application that uses a Google Search API to inst
   - username: `labber` 
   - password: `labber` 
   - database: `midterm`
-3. Create the serial keys, KEY1 and KEY2, in the `.env` file which are for cookies, and can be set to anything. SERP_API_KEY needs to be obtained from https://serpapi.com/.
+3. Create the serial keys, KEY1 and KEY2, in the `.env` file which are for cookies and can be set to anything. SERP_API_KEY needs to be obtained from https://serpapi.com/.
 4. Install dependencies: `npm i`
 5. Fix to binaries for sass: `npm rebuild node-sass`
 6. Reset database: `npm run db:reset`
