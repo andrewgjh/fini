@@ -1,14 +1,4 @@
-DROP TABLE IF EXISTS reminders CASCADE;
-DROP TABLE IF EXISTS to_do_items CASCADE;
-DROP TABLE IF EXISTS categories CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS locations CASCADE;
-
-CREATE TABLE locations (
-  id SERIAL PRIMARY KEY NOT NULL,
-  city VARCHAR(100),
-  country VARCHAR(100)
-);
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -20,32 +10,3 @@ CREATE TABLE users (
   opt_out BOOLEAN default FALSE,
   location_id INTEGER REFERENCES locations(id) ON DELETE CASCADE
 );
-
-CREATE TABLE categories (
-  id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255) NOT NULL,
-  icon_url VARCHAR(255),
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
-);
-
-CREATE TABLE to_do_items (
-  id SERIAL PRIMARY KEY NOT NULL,
-  title VARCHAR(255) NOT NULL,
-  content VARCHAR(500),
-  category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
-  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  priority SMALLINT,
-  deadline TIMESTAMP,
-  is_completed BOOLEAN default FALSE,
-  created_at TIMESTAMP,
-  completed_at TIMESTAMP
-);
-
-CREATE TABLE reminders (
-  id SERIAL PRIMARY KEY NOT NULL,
-  to_do_item_id INTEGER NOT NULL REFERENCES to_do_items(id) ON DELETE CASCADE,
-  is_completed BOOLEAN,
-  created_at TIMESTAMP
-);
-
-
