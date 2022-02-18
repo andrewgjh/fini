@@ -44,10 +44,7 @@ const addItem = function (event) {
       .then((data) => {
         $loader.removeClass('loader');
         const category = data.rows[0].category_id;
-        if (!$(`#item-expand-${category}`).is(':checked')) {
-          $(`#${category}`).trigger('click');
-          $(`#${category}`).trigger('click');
-        }
+        $(`#${category}`).trigger('click');
         $("form").get(0).reset();
         $populateCounts();
       });
@@ -122,7 +119,7 @@ const toggleCategory = function (event) {
 const toggleToDoListItem = function (event) {
   // obtains item id and the checkbox element that was selected
   const item_id = event.target.id.slice(4);
-  const targetElement= `#item-details-expand-${item_id}`
+  const targetElement = `#item-details-expand-${item_id}`
   // manually adjusts checkbox to be checked or unchecked due to no listener on this dynamically created checkbox
   if ($(targetElement).is(':checked')) {
     $(targetElement).prop('checked', false);
