@@ -110,8 +110,6 @@ const toggleCategory = function (event) {
         <section class="to-do-details-${item.id}" ></section>
         </ul>
         `);
-          // const checkboxID = `checkbox-${item.id}`;
-          // $(checkboxID).prop('checked', false);
         })
       });
   } else {
@@ -120,26 +118,33 @@ const toggleCategory = function (event) {
   }
 }
 
+// used to toggle the to-do list item within the category objects
 const toggleToDoListItem = function (event) {
+  // obtains item id and the checkbox element that was selected
   const item_id = event.target.id.slice(4);
-  if ($(`#item-details-expand-${item_id}`).is(':checked')) {
-    $(`#item-details-expand-${item_id}`).prop('checked', false);
+  const targetElement= `#item-details-expand-${item_id}`
+  // manually adjusts checkbox to be checked or unchecked due to no listener on this dynamically created checkbox
+  if ($(targetElement).is(':checked')) {
+    $(targetElement).prop('checked', false);
   } else {
-    $(`#item-details-expand-${item_id}`).prop('checked', true);
+    $(targetElement).prop('checked', true);
   }
-  const expanded = $(`#item-details-expand-${item_id}`).is(':checked');
+  // check to see if the checkbox is checked (true)
+  const expanded = $(targetElement).is(':checked');
   if (expanded) {
-
+    // obtains category name and item details to populate the drop down with
     $.when(getCategories(), getItemDetails(item_id)).done(function (categories, items) {
       let item = items[0]
       const sectionMisc = $(`.to-do-details-${item_id}`);
       const description = (item.content || "");
       const category = item.category_id;
       let selectOptions = "";
+      // create dynamic drop-down with list of potentially new categories
       categories[0].forEach((listCategory) => {
         selectOptions += `<option class ='currentCategory-${category}' value="${listCategory.id}">${listCategory.name}</option>
       `
       });
+      // append code to create drop-down
       sectionMisc.append(`
       <div class="to-delete-details-${item_id} to-do-details mx-5">
       <span class="to-do-details-description">
@@ -158,6 +163,7 @@ const toggleToDoListItem = function (event) {
           `);
 
     });
+    //else statement to delete drop-down code that was appended above, for when checkbox check earlier is false
   } else {
     const miscList = $(`.to-delete-details-${item_id}`);
     miscList.detach();
