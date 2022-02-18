@@ -64,7 +64,7 @@ const sortCategories = function(query) {
   };
 
   let mostOccurences = {
-    categoryId: 5,
+    categoryId: 0,
     max: 0
   };
 
@@ -83,7 +83,7 @@ const sortCategories = function(query) {
         // console.log(tally[key].sum(countOccurence, googleResponse));
       }
       // console.log(mostOccurences.categoryId);
-      return mostOccurences.categoryId;
+      return mostOccurences.max < 15 ? 5 : mostOccurences.categoryId;
     })
     .catch(function(error) {
       console.log(error);
@@ -94,3 +94,4 @@ const sortCategories = function(query) {
 module.exports = {
   sortCategories,
 };
+

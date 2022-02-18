@@ -1,4 +1,4 @@
-function moveCategory(itemid, newCategory){
+function moveCategory(itemid, newCategory) {
   return $.ajax({
     method: 'PUT',
     url: "/to-do-items",
@@ -6,29 +6,29 @@ function moveCategory(itemid, newCategory){
   });
 };
 
-function getItems (categoryid){
+function getItems(categoryid) {
   return $.ajax({
     type: 'GET',
     url: `/to-do-items/${categoryid}`,
   })
 }
 
-function postDescription (content, item_id) {
+function postDescription(content, item_id) {
   return $.ajax({
     method: 'PUT',
     url: '/db',
     data: `itemID=${item_id}&content=${content}`
-    })
+  })
 }
 
-function getItemDetails(itemID){
+function getItemDetails(itemID) {
   return $.ajax({
     type: 'GET',
     url: `/db/b/${itemID}`,
   })
 }
 
-function completeItemBool(postid, bool){
+function completeItemBool(postid, bool) {
   return $.ajax({
     method: 'PUT',
     url: "/to-do-items",
@@ -36,10 +36,25 @@ function completeItemBool(postid, bool){
   })
 }
 
-function postToDoItem (item){
+function postToDoItem(item) {
   return $.ajax({
     method: 'POST',
     url: "/to-do-items",
     data: item
   })
-}
+};
+
+function deleteItem(itemid) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "/to-do-items",
+    data: `postID=${itemid}`
+  })
+};
+
+function getCurrentUser(){
+  return $.ajax({
+    type: 'GET',
+    url: `/getuser`,
+  })
+};
